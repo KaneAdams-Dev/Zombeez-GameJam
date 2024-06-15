@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace ZombeezGameJam
+namespace ZombeezGameJam.Entities
 {
     public class BaseEntity : MonoBehaviour
     {
         [Header("Health System")]
         [SerializeField][Min(10)] private int _maxHealth = 100;
-        private int _currentHealth;
-
-        [SerializeField] private GameObject _corpsePrefab;
         [SerializeField] private int _defense = 0;
 
         [Header("Combat System")]
         [SerializeField] private int _attackStrength = 5;
+
+        [Space(5)]
+        [SerializeField] private GameObject _corpsePrefab;
+        
+        private int _currentHealth;
+
+        #region Unity Methods
 
         // Start is called before the first frame update
         private void Start()
@@ -35,6 +37,10 @@ namespace ZombeezGameJam
                 HealDamage(5);
             }
         }
+
+        #endregion Unity Methods
+
+        #region Custom Methods
 
         private void TakeDamage(int a_damageAmount)
         {
@@ -66,9 +72,11 @@ namespace ZombeezGameJam
             Debug.Log("New Health: " + _currentHealth);
         }
 
-        private void OnDeath()
+        public void OnDeath()
         {
             Destroy(gameObject);
         }
+
+        #endregion Custom Methods
     }
 }

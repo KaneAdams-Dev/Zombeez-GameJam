@@ -1,27 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace ZombeezGameJam
+namespace ZombeezGameJam.Entities.Player
 {
+    public enum PlayerStates
+    {
+        Idle,
+        Run,
+        Jump,
+        Land,
+        Midair,
+    }
+
+    public enum PlayerWeapons
+    {
+        Unarmed,
+        Revolver1,
+        Pistol,
+        Revolver2,
+    }
+
     public class PlayerScript : BaseEntity
     {
-        [Header("Player Components")]
-        [SerializeField] internal PlayerInputs inputScript;
-        [SerializeField] internal PlayerMovement movementScript;
+        [Header("Script References")]
+        [SerializeField] internal PlayerInputScript inputScript;
+        [SerializeField] internal PlayerMovementScript movementScript;
+        [SerializeField] internal PlayerAnimationScript animationScript;
 
-        internal Vector2 moveInput;
+        [Header("Movement Values")]
+        [SerializeField] internal float movementSpeed = 100f;
+        [SerializeField] internal float jumpHeight = 10f;
 
-        // Start is called before the first frame update
-        void Start()
+        internal PlayerStates currentState;
+        public PlayerWeapons currentWeapon;
+
+        private void Start()
         {
-
+            currentWeapon = 0;
+            UpdatePlayerState(PlayerStates.Idle);
         }
 
-        // Update is called once per frame
-        void Update()
+        internal void UpdatePlayerState(PlayerStates a_newState)
         {
+            if (currentState == a_newState)
+            {
+                return;
+            }
 
+            if (currentState == PlayerStates.Midair && a_newState == PlayerStates.Run)
+            {
+                return;
+            }
+
+            currentState = a_newState;
+            animationScript.UpdateAnimationState();
         }
     }
 }
