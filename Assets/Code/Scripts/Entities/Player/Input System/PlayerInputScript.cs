@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] private PlayerScript _playerScript;
 
         internal bool isFacingLeft;
+        internal bool isFiring;
         internal Vector2 moveInput;
 
         private PlayerActions _playerActions;
@@ -30,6 +32,7 @@ namespace ZombeezGameJam.Entities.Player
             _playerActionsMap.Movement.canceled += OnMovementCanceled;
 
             _playerActionsMap.Jump.performed += OnJumpPerformed;
+            _playerActionsMap.Fire.performed += OnFirePerformed;
         }
 
         private void OnDisable()
@@ -40,6 +43,7 @@ namespace ZombeezGameJam.Entities.Player
             _playerActionsMap.Movement.canceled -= OnMovementCanceled;
 
             _playerActionsMap.Jump.performed -= OnJumpPerformed;
+            _playerActionsMap.Fire.performed -= OnFirePerformed;
         }
 
         #endregion Unity Methods
@@ -64,6 +68,11 @@ namespace ZombeezGameJam.Entities.Player
         private void OnJumpPerformed(InputAction.CallbackContext context)
         {
             _playerScript.movementScript.ExecuteJump();
+        }
+
+        private void OnFirePerformed(InputAction.CallbackContext context)
+        {
+            _playerScript.weaponScript.FireWeapon();
         }
 
         #endregion Custom Methods

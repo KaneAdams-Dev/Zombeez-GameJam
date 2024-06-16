@@ -2,13 +2,12 @@ using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Player
 {
-    [RequireComponent(typeof(PlayerScript), typeof(SpriteRenderer), typeof(Animator))]
+    [RequireComponent(typeof(PlayerScript), typeof(Animator))]
     public class PlayerAnimationScript : MonoBehaviour
     {
         [SerializeField] private PlayerScript _playerScript;
 
         private Animator _animator;
-        private SpriteRenderer _renderer;
 
         private string _currentAnimation;
 
@@ -17,7 +16,6 @@ namespace ZombeezGameJam.Entities.Player
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            _renderer = GetComponent<SpriteRenderer>();
         }
 
         #endregion Unity Methods
@@ -26,8 +24,6 @@ namespace ZombeezGameJam.Entities.Player
 
         public void UpdateAnimationState()
         {
-            _renderer.flipX = _playerScript.inputScript.isFacingLeft;
-
             string newAnimation = _playerScript.currentState switch
             {
                 PlayerStates.Jump => "Jump",

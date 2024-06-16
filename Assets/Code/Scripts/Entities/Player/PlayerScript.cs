@@ -17,6 +17,12 @@ namespace ZombeezGameJam.Entities.Player
         Revolver1,
         Pistol,
         Revolver2,
+        SawedoffShotgun,
+        Shotgun1,
+        Shotgun2,
+        Uzi,
+        AK,
+        LMG,
     }
 
     public class PlayerScript : BaseEntity
@@ -25,6 +31,7 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] internal PlayerInputScript inputScript;
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerAnimationScript animationScript;
+        [SerializeField] internal WeaponScript weaponScript;
 
         [Header("Movement Values")]
         [SerializeField] internal float movementSpeed = 100f;

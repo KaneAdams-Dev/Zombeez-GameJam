@@ -46,6 +46,15 @@ namespace ZombeezGameJam
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""087652dc-6943-4ee7-abe6-41a453b05838"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -235,6 +244,28 @@ namespace ZombeezGameJam
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b9035f6-76f1-4648-8a5a-a876e94bf778"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff16b879-a5a5-4e59-8fd2-391d751087e8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,6 +276,7 @@ namespace ZombeezGameJam
             m_Player_Map = asset.FindActionMap("Player_Map", throwIfNotFound: true);
             m_Player_Map_Movement = m_Player_Map.FindAction("Movement", throwIfNotFound: true);
             m_Player_Map_Jump = m_Player_Map.FindAction("Jump", throwIfNotFound: true);
+            m_Player_Map_Fire = m_Player_Map.FindAction("Fire", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -308,12 +340,14 @@ namespace ZombeezGameJam
         private List<IPlayer_MapActions> m_Player_MapActionsCallbackInterfaces = new List<IPlayer_MapActions>();
         private readonly InputAction m_Player_Map_Movement;
         private readonly InputAction m_Player_Map_Jump;
+        private readonly InputAction m_Player_Map_Fire;
         public struct Player_MapActions
         {
             private @PlayerActions m_Wrapper;
             public Player_MapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Player_Map_Movement;
             public InputAction @Jump => m_Wrapper.m_Player_Map_Jump;
+            public InputAction @Fire => m_Wrapper.m_Player_Map_Fire;
             public InputActionMap Get() { return m_Wrapper.m_Player_Map; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -329,6 +363,9 @@ namespace ZombeezGameJam
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
 
             private void UnregisterCallbacks(IPlayer_MapActions instance)
@@ -339,6 +376,9 @@ namespace ZombeezGameJam
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
             }
 
             public void RemoveCallbacks(IPlayer_MapActions instance)
@@ -360,6 +400,7 @@ namespace ZombeezGameJam
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnFire(InputAction.CallbackContext context);
         }
     }
 }

@@ -37,6 +37,7 @@ namespace ZombeezGameJam.Entities.Player
             if (CheckIfGrounded() && _playerScript && _playerScript.currentState == PlayerStates.Midair)
             {
                 _playerScript.UpdatePlayerState(PlayerStates.Land);
+                Invoke(nameof(ExecuteLanding), 0.2f);
             }
         }
 
@@ -51,6 +52,8 @@ namespace ZombeezGameJam.Entities.Player
 
         private void MovePlayer()
         {
+            transform.localScale = _playerScript.inputScript.isFacingLeft ? new Vector2(-1, transform.localScale.y) : new Vector2(1, transform.localScale.y);
+
             float xVelocity = _playerScript.inputScript.moveInput.x * _playerScript.movementSpeed * Time.fixedDeltaTime;
             _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
         }
@@ -64,6 +67,11 @@ namespace ZombeezGameJam.Entities.Player
                 float yVelocity = _playerScript.jumpHeight * Time.fixedDeltaTime;
                 _rbody.velocity = new Vector2(_rbody.velocity.x, yVelocity);
             }
+        }
+
+        public void ExecuteLanding()
+        {
+            _playerScript.UpdatePlayerState(PlayerStates.Idle);
         }
 
         private bool CheckIfGrounded()

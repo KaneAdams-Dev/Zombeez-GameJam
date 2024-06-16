@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d300218a2d2402a42a232f4e689cb122
+guid: 5385e5f1654567a48b1cec6edf1d05dc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character1_run_weapon1_201-sheet_0
+      name: firing_1_101-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f21604f46ecd3040a41596ac1b8601e
-      internalID: 726515004
+      spriteID: 884c5392751773d43bdb21b00bc145fd
+      internalID: -1030381520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character1_run_weapon1_201-sheet_1
+      name: firing_1_101-sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -171,50 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70824be6d3c80674a9a6bc351ad448e9
-      internalID: -1709499131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character1_run_weapon1_201-sheet_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5b61333c8230554aa12cee85b4c0321
-      internalID: 1330890512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character1_run_weapon1_201-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bbefa8fcd20405d4fa44c1769f89b77d
-      internalID: -1499446472
+      spriteID: cde6e5cd80c7d2648965c8f2da81c9f4
+      internalID: -549518991
       vertices: []
       indices: 
       edges: []
@@ -230,10 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      character1_run_weapon1_201-sheet_0: 726515004
-      character1_run_weapon1_201-sheet_1: -1709499131
-      character1_run_weapon1_201-sheet_2: 1330890512
-      character1_run_weapon1_201-sheet_3: -1499446472
+      firing_1_101-sheet_0: -1030381520
+      firing_1_101-sheet_1: -549518991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
