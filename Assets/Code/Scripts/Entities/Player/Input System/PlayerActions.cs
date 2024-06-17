@@ -32,8 +32,8 @@ namespace ZombeezGameJam
                 {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
-                    ""id"": ""40691b4e-27b0-41e9-8dbd-2836fcc7d4ab"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""7bff2abb-4816-42c2-a3e4-ca7cbb953267"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -59,9 +59,42 @@ namespace ZombeezGameJam
             ],
             ""bindings"": [
                 {
+                    ""name"": """",
+                    ""id"": ""3b9035f6-76f1-4648-8a5a-a876e94bf778"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff16b879-a5a5-4e59-8fd2-391d751087e8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2dfdc8c-17ac-4702-833d-c27dc7b728bd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Keyboard WASD"",
-                    ""id"": ""bcc7569f-7d72-482a-8b66-2d258f79f45e"",
-                    ""path"": ""2DVector"",
+                    ""id"": ""43c8afc6-6c16-4666-b7c6-b130acf004d7"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -70,30 +103,8 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""2d6ace08-9d25-4df3-97d1-3be200277294"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""00f7d9f2-dda8-4ee8-9ba0-8e62ab79f33f"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""654293e6-5c17-48ba-8417-3e75a5983f41"",
+                    ""name"": ""negative"",
+                    ""id"": ""02e336f9-aaef-47fe-9beb-4f10864e1ca0"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -103,8 +114,8 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""906ecd56-d844-43a2-a809-0a3218b2c845"",
+                    ""name"": ""positive"",
+                    ""id"": ""4acadb45-3c1e-4712-a803-05350699e2b5"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -114,9 +125,9 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Keyboard ArrowKeys"",
-                    ""id"": ""ce886db9-1dee-4279-851e-90ad4866c811"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""Keyboard Arrows"",
+                    ""id"": ""aa00a169-5f36-4d7a-bd5d-4a13a2c20b89"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -125,30 +136,8 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""69c0b426-1851-48aa-93a6-97f07a3a175a"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""b923bc9a-3d7a-4b59-8469-cc10962cf4e9"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""9ce2b81a-8e47-4e1c-b7ef-cb24c07f9ce7"",
+                    ""name"": ""negative"",
+                    ""id"": ""9a5497cf-9883-4c65-adeb-1d36bd1eb127"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -158,8 +147,8 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""92c7693c-f5c3-4da7-b0e1-f8f9d5943190"",
+                    ""name"": ""positive"",
+                    ""id"": ""525456ec-5e68-45af-a397-f832d3183003"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -169,9 +158,9 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Controller"",
-                    ""id"": ""8fe8f2f9-6701-4257-9bda-7e073f9b5e5f"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""Controller Left Joystick"",
+                    ""id"": ""479f1a35-a6e9-4de9-b564-e361c6337bbe"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -180,30 +169,8 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""0cd9e1f0-11e8-49f5-896c-b6d7d950deb5"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""45b1e16c-e80f-4ce3-ac25-5187a175b8f0"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f90350cc-3740-4dae-9641-b8872bbe932a"",
+                    ""name"": ""negative"",
+                    ""id"": ""923e0572-d473-474b-96e5-2e91fbf93207"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -213,9 +180,42 @@ namespace ZombeezGameJam
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""64b6dfd3-2983-4a9f-861c-e0588541d552"",
+                    ""name"": ""positive"",
+                    ""id"": ""9183d4cf-0f23-4b1f-a05c-dfabee511f6f"",
                     ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Controller D-Pad"",
+                    ""id"": ""27dba30f-8bc9-46a7-8304-b3251f306138"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5e1772c9-af50-4614-8141-6d1594fbd406"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4f4d04c8-5215-48e3-927c-b8014f6811a3"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -226,7 +226,7 @@ namespace ZombeezGameJam
                 {
                     ""name"": """",
                     ""id"": ""aba33fdf-862f-45c6-83f8-c7155fd25c7a"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -247,23 +247,23 @@ namespace ZombeezGameJam
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3b9035f6-76f1-4648-8a5a-a876e94bf778"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""e5744dc1-df12-4e24-a66d-42212dfa238b"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ff16b879-a5a5-4e59-8fd2-391d751087e8"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""60c5977e-dd1c-4742-b6e3-46f828817be5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }

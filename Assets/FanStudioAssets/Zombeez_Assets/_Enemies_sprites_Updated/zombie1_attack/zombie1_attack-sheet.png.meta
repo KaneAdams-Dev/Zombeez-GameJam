@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bbf8a65085113042a0915d33aef93a7
+guid: 16ad7cf3a96347d43be92cc9f38dbf62
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,33 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,251 +110,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_0
+      name: zombie1_attack-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -44.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 69.6, y: -2}
-        - {x: -44.4, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d490782804670f64bae23469ee8837a6
-      internalID: -2113070136
+      spriteID: 10457debf84366d48a41b9cc6ab3d0e6
+      internalID: 1684628396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_1
+      name: zombie1_attack-sheet_1
       rect:
         serializedVersion: 2
-        x: 140
+        x: 64
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.399994, y: -2}
-        - {x: -70.399994, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 901cc58039ae9594086e25bc926c69d6
-      internalID: -1532652545
+      spriteID: e4e373733d1dfd04da1cb2fb8bbf13b0
+      internalID: -301601052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_2
+      name: zombie1_attack-sheet_2
       rect:
         serializedVersion: 2
-        x: 280
+        x: 128
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.399994, y: -2}
-        - {x: -70.399994, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc51a7643478169499d38bf7da882448
-      internalID: 1298743020
+      spriteID: 17b186ff3ebdce94eb8e794f629f7d0a
+      internalID: -1638976322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_3
+      name: zombie1_attack-sheet_3
       rect:
         serializedVersion: 2
-        x: 420
+        x: 192
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.399994, y: -2}
-        - {x: -70.399994, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 614bc34900122a640a3a7d65396fb3b8
-      internalID: 168430205
+      spriteID: 7213d1bd054bd0c488c754239d9e140a
+      internalID: -1346072926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_4
+      name: zombie1_attack-sheet_4
       rect:
         serializedVersion: 2
-        x: 560
+        x: 256
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.39996, y: -2}
-        - {x: -70.400024, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 621e1b8815022fd438681b3be46de54b
-      internalID: -1209104450
+      spriteID: 499e96bf66ac0b84c9b7e683392b2e5a
+      internalID: -516298947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_5
+      name: zombie1_attack-sheet_5
       rect:
         serializedVersion: 2
-        x: 700
+        x: 320
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 69.599976, y: -2}
-        - {x: -70.400024, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b630d486ff1f944386265737cf75d7b
-      internalID: 1099535186
+      spriteID: dfd536e98965dc041afe358a0fe61474
+      internalID: 318913548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_6
+      name: zombie1_attack-sheet_6
       rect:
         serializedVersion: 2
-        x: 840
+        x: 384
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.39996, y: -2}
-        - {x: -70.400024, y: -1}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd275dcfda5d9294786db5708439f442
-      internalID: 1827424353
+      spriteID: fe5347e2e6a3752489e52f712e300894
+      internalID: -907945761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_7
+      name: zombie1_attack-sheet_7
       rect:
         serializedVersion: 2
-        x: 980
+        x: 448
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.400024, y: -2}
-        - {x: -70.400024, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d7b7bf5a8fba4542abc1b09780e9899
-      internalID: 918447134
+      spriteID: ced5760947f7e5d4e9904fc42ac658cb
+      internalID: -821030820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_8
+      name: zombie1_attack-sheet_8
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 512
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 70.4, y: -64}
-        - {x: 70.400024, y: -2}
-        - {x: -70.400024, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b59e1d0590f45b4fade976d2cff03b4
-      internalID: -606699672
+      spriteID: e4d62603e39e16a47bddcde8f78c084f
+      internalID: 446526956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: amusement-tile_01-sheet_9
+      name: zombie1_attack-sheet_9
       rect:
         serializedVersion: 2
-        x: 1260
+        x: 576
         y: 0
-        width: 140.8
-        height: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -70.4, y: -64}
-        - {x: 65.599976, y: -64}
-        - {x: 65.599976, y: -2}
-        - {x: -70.400024, y: -2}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 177c07c2b93207b4e82dfefe0b6b3b93
-      internalID: 1972713936
+      spriteID: f22f7ff7a57881546b67a90de24a56ea
+      internalID: 1581490585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie1_attack-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c345d412ab4e14691dd41094ea0013
+      internalID: -969015567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie1_attack-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d35c12e7d26134f853f1ed13ce4c48
+      internalID: -1628746653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie1_attack-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c1aa0024d96ce4695826a14df53396
+      internalID: -58289508
       vertices: []
       indices: 
       edges: []
@@ -396,16 +393,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      amusement-tile_01-sheet_0: -2113070136
-      amusement-tile_01-sheet_1: -1532652545
-      amusement-tile_01-sheet_2: 1298743020
-      amusement-tile_01-sheet_3: 168430205
-      amusement-tile_01-sheet_4: -1209104450
-      amusement-tile_01-sheet_5: 1099535186
-      amusement-tile_01-sheet_6: 1827424353
-      amusement-tile_01-sheet_7: 918447134
-      amusement-tile_01-sheet_8: -606699672
-      amusement-tile_01-sheet_9: 1972713936
+      zombie1_attack-sheet_0: 1684628396
+      zombie1_attack-sheet_1: -301601052
+      zombie1_attack-sheet_10: -969015567
+      zombie1_attack-sheet_11: -1628746653
+      zombie1_attack-sheet_12: -58289508
+      zombie1_attack-sheet_2: -1638976322
+      zombie1_attack-sheet_3: -1346072926
+      zombie1_attack-sheet_4: -516298947
+      zombie1_attack-sheet_5: 318913548
+      zombie1_attack-sheet_6: -907945761
+      zombie1_attack-sheet_7: -821030820
+      zombie1_attack-sheet_8: 446526956
+      zombie1_attack-sheet_9: 1581490585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

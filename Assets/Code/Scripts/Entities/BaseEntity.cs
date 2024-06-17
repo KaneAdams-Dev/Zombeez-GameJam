@@ -42,7 +42,7 @@ namespace ZombeezGameJam.Entities
 
         #region Custom Methods
 
-        private void TakeDamage(int a_damageAmount)
+        public void TakeDamage(int a_damageAmount)
         {
             a_damageAmount -= _defense;
             a_damageAmount = Mathf.Max(0, a_damageAmount);
@@ -56,7 +56,7 @@ namespace ZombeezGameJam.Entities
             }
         }
 
-        private void HealDamage(int a_healAmount)
+        public void HealDamage(int a_healAmount)
         {
             _currentHealth += a_healAmount;
             if (_currentHealth >= _maxHealth)
@@ -74,6 +74,10 @@ namespace ZombeezGameJam.Entities
 
         public void OnDeath()
         {
+            if (_corpsePrefab != null)
+            {
+                Instantiate(_corpsePrefab, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
 

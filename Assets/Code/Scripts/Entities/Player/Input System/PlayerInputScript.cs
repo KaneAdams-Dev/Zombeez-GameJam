@@ -11,7 +11,7 @@ namespace ZombeezGameJam.Entities.Player
 
         internal bool isFacingLeft;
         internal bool isFiring;
-        internal Vector2 moveInput;
+        internal float xMoveInput;
 
         private PlayerActions _playerActions;
         private PlayerActions.Player_MapActions _playerActionsMap;
@@ -52,16 +52,16 @@ namespace ZombeezGameJam.Entities.Player
 
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
-            moveInput = context.ReadValue<Vector2>();
-            moveInput.y = 0;
+            xMoveInput = context.ReadValue<float>();
+            //moveInput.y = 0;
 
-            isFacingLeft = moveInput.x < 0;
+            isFacingLeft = xMoveInput < 0;//moveInput.x < 0;
             _playerScript.UpdatePlayerState(PlayerStates.Run);
         }
 
         private void OnMovementCanceled(InputAction.CallbackContext context)
         {
-            moveInput = Vector2.zero;
+            xMoveInput = 0;//moveInput = Vector2.zero;
             _playerScript.UpdatePlayerState(PlayerStates.Idle);
         }
 

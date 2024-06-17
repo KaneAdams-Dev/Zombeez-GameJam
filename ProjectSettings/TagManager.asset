@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Platforms
-  - 
-  - 
-  - 
+  - Player
+  - Bullets
+  - Enemies
   - 
   - 
   - 
@@ -49,6 +49,12 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 778354419
+    locked: 0
+  - name: Enemies
+    uniqueID: 1641497243
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1143215415
     locked: 0
   - name: Player
     uniqueID: 609876909
