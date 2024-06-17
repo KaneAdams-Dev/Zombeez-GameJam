@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Player
 {
-    [RequireComponent(typeof(PlayerScript), typeof(Animator))]
+    [RequireComponent(typeof(Animator))]
     public class PlayerAnimationScript : MonoBehaviour
     {
         [SerializeField] private PlayerScript _playerScript;

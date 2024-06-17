@@ -1,0 +1,16 @@
+{
+    "name": "Enemies",
+    "rootNamespace": "ZombeezGameJam.Entities.Player",
+    "references": [
+        "GUID:b38b9821dfcbe024fac2c9f80ae1a471"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

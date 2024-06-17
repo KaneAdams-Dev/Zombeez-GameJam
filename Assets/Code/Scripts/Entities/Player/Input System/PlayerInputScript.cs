@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -72,7 +73,20 @@ namespace ZombeezGameJam.Entities.Player
 
         private void OnFirePerformed(InputAction.CallbackContext context)
         {
-            _playerScript.weaponScript.FireWeapon();
+            if (CanPlayerFire())
+            {
+                _playerScript.weaponScript.FireWeapon();
+            }
+
+        }
+
+        private bool CanPlayerFire()
+        {
+            bool isUnarmed = _playerScript.currentWeapon == PlayerWeapons.Unarmed;
+            PlayerStates[] invalidStates = new PlayerStates[] { PlayerStates.Jump, PlayerStates.Midair, PlayerStates.Land };
+            bool isInValidState = invalidStates.Contains(_playerScript.currentState);
+
+            return !(isUnarmed || isInValidState);
         }
 
         #endregion Custom Methods

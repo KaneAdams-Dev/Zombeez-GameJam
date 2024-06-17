@@ -40,8 +40,10 @@ namespace ZombeezGameJam.Entities.Player
         internal PlayerStates currentState;
         public PlayerWeapons currentWeapon;
 
-        private void Start()
+        public override void Start()
         {
+            base.Start();
+
             currentWeapon = 0;
             UpdatePlayerState(PlayerStates.Idle);
         }

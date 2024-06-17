@@ -4,6 +4,8 @@ namespace ZombeezGameJam.Entities
 {
     public class BaseEntity : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _renderer;
+
         [Header("Health System")]
         [SerializeField][Min(10)] private int _maxHealth = 100;
         [SerializeField] private int _defense = 0;
@@ -18,10 +20,16 @@ namespace ZombeezGameJam.Entities
 
         #region Unity Methods
 
+        private void Awake()
+        {
+            //_renderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
         // Start is called before the first frame update
-        private void Start()
+        public virtual void Start()
         {
             _currentHealth = _maxHealth;
+            ReturnToDefaultColour();
         }
 
         // Update is called once per frame
@@ -47,6 +55,12 @@ namespace ZombeezGameJam.Entities
             a_damageAmount -= _defense;
             a_damageAmount = Mathf.Max(0, a_damageAmount);
 
+            if (a_damageAmount > 0)
+            {
+                _renderer.color = Color.red;
+                Invoke(nameof(ReturnToDefaultColour), 0.1f);
+            }
+
             _currentHealth -= a_damageAmount;
             OnHealthChange();
 
@@ -70,6 +84,11 @@ namespace ZombeezGameJam.Entities
         private void OnHealthChange()
         {
             Debug.Log("New Health: " + _currentHealth);
+        }
+
+        private void ReturnToDefaultColour()
+        {
+            _renderer.color = Color.white;
         }
 
         public void OnDeath()
