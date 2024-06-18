@@ -13,6 +13,8 @@ namespace ZombeezGameJam.Entities
         [Header("Combat System")]
         [SerializeField] private int _attackStrength = 5;
 
+        public int AttackStength => _attackStrength;
+
         [Space(5)]
         [SerializeField] private GameObject _corpsePrefab;
         
@@ -91,7 +93,7 @@ namespace ZombeezGameJam.Entities
             _renderer.color = Color.white;
         }
 
-        public void OnDeath()
+        public virtual void OnDeath()
         {
             if (_corpsePrefab != null)
             {

@@ -1,6 +1,6 @@
 {
     "name": "Enemies",
-    "rootNamespace": "ZombeezGameJam.Entities.Player",
+    "rootNamespace": "ZombeezGameJam.Entities.Enemies",
     "references": [
         "GUID:b38b9821dfcbe024fac2c9f80ae1a471"
     ],
