@@ -28,14 +28,15 @@ namespace ZombeezGameJam.Entities
         }
 
         // Start is called before the first frame update
-        public virtual void Start()
+        public  virtual void Start()
         {
+            ApplyEntityStats();
             _currentHealth = _maxHealth;
             ReturnToDefaultColour();
         }
 
         // Update is called once per frame
-        private void Update()
+        public virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
@@ -51,6 +52,11 @@ namespace ZombeezGameJam.Entities
         #endregion Unity Methods
 
         #region Custom Methods
+
+        public virtual void ApplyEntityStats()
+        {
+
+        }
 
         public void TakeDamage(int a_damageAmount)
         {
@@ -97,7 +103,8 @@ namespace ZombeezGameJam.Entities
         {
             if (_corpsePrefab != null)
             {
-                Instantiate(_corpsePrefab, transform.position, Quaternion.identity);
+                GameObject corpse = Instantiate(_corpsePrefab, transform.position, Quaternion.identity);
+                corpse.transform.localScale = transform.localScale;
             }
             Destroy(gameObject);
         }

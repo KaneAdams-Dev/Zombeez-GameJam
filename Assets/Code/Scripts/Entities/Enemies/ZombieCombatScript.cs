@@ -8,7 +8,6 @@ namespace ZombeezGameJam.Entities.Enemies
     {
         [SerializeField] private ZombiesScript _zombieScript;
 
-        [SerializeField] private Transform _target;
 
         // Start is called before the first frame update
         void Start()
@@ -19,33 +18,36 @@ namespace ZombeezGameJam.Entities.Enemies
         // Update is called once per frame
         void Update()
         {
-            if (_target == null)
+            if (_zombieScript._target == null)
             {
+                _zombieScript.UpdateZombieState(ZombieStates.Patrol);
                 return;
             }
-
-            if (IsTargetInRange() && IsFacingTarget())
+            //Debug.Log(_zombieScript.IsFacingTarget());
+            if (IsTargetInRange() /*&& _zombieScript.IsFacingTarget()*/)
             {
                 Attack();
+            } else if (_zombieScript.currentState != ZombieStates.Attack) 
+            {
+                _zombieScript.UpdateZombieState(ZombieStates.Patrol);
             }
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, new Vector3(_zombieScript._attackRange, _zombieScript._attackRange, _zombieScript._attackRange));
+            Gizmos.DrawWireSphere(transform.position, _zombieScript._attackRange);
+            
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _zombieScript._chaseRange);
         }
 
         bool IsTargetInRange()
         {
-            return Vector3.Distance(transform.position, _target.position) <= _zombieScript._attackRange;
+            return Vector3.Distance(transform.position, _zombieScript._target.position) <= _zombieScript._attackRange;
         }
 
-        bool IsFacingTarget()
-        {
-            float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
-            return dot > 0.75f;
-        }
+        
 
         void Attack()
         {

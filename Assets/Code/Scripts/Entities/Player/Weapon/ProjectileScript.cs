@@ -24,7 +24,7 @@ namespace ZombeezGameJam.Entities.Player
         void Start()
         {
             transform.localScale = new Vector3(_xDirection, 1, 1);
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 1f);
         }
 
         // Update is called once per frame

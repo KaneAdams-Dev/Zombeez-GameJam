@@ -7,7 +7,7 @@ namespace ZombeezGameJam.Entities.Player
     {
         [SerializeField] private PlayerScript _playerScript;
 
-        private Animator _animator;
+        internal Animator _animator;
 
         private string _currentAnimation;
 
@@ -17,6 +17,12 @@ namespace ZombeezGameJam.Entities.Player
         {
             _animator = GetComponent<Animator>();
         }
+
+        //private void Start()
+        //{
+        //    animatorOverrideController = new AnimatorOverrideController(_playerScript.stats.Controller);
+        //    _animator.runtimeAnimatorController = animatorOverrideController;
+        //}
 
         #endregion Unity Methods
 

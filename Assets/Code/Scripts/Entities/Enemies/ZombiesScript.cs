@@ -17,12 +17,18 @@ namespace ZombeezGameJam.Entities.Enemies
         [Header("Script References")]
         [SerializeField] internal ZombieCombatScript combatScript;
         [SerializeField] internal ZombieAnimationScript animationScript;
+        [SerializeField] internal ZombieMovementScript movementScript;
         [SerializeField] internal ZombieHitbox hitboxScript;
 
         [SerializeField] private GameObject _weaponDrop;
 
+        [SerializeField] internal Transform _target;
+        internal Transform _player;
+
         [SerializeField] internal float _attackRange;
         [SerializeField] internal float _chaseRange;
+
+        [SerializeField] internal float movementSpeed = 100f;
 
         internal ZombieStates currentState;
 
@@ -30,6 +36,18 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             base.Start();
             UpdateZombieState(ZombieStates.Idle);
+        }
+
+        public override void Update()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            if (_player != null)
+            {
+                if (Vector3.Distance(_player.position, transform.position) < _chaseRange)
+                {
+                    _target = _player;
+                }
+            }
         }
 
         internal void UpdateZombieState(ZombieStates a_newState)
@@ -41,6 +59,10 @@ namespace ZombeezGameJam.Entities.Enemies
 
             currentState = a_newState;
             animationScript.UpdateAnimationState();
+            if (currentState == ZombieStates.Patrol)
+            {
+                movementScript.StartRoam();
+            }
         }
 
         public override void OnDeath()
@@ -54,6 +76,14 @@ namespace ZombeezGameJam.Entities.Enemies
                     Instantiate(_weaponDrop, transform.position, Quaternion.identity);
                 }
             }
+        }
+
+        internal float IsFacingTarget()
+        {
+            //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
+            float direction = _target.position.x - transform.position.x;
+            Debug.Log(direction / Mathf.Abs(direction));
+            return direction / Mathf.Abs(direction);
         }
     }
 }

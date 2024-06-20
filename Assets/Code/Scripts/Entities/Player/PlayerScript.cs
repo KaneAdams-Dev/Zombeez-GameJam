@@ -32,6 +32,7 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerAnimationScript animationScript;
         [SerializeField] internal WeaponScript weaponScript;
+        [SerializeField] internal BaseEntityStats stats;
 
         [Header("Movement Values")]
         [SerializeField] internal float movementSpeed = 100f;
@@ -46,6 +47,14 @@ namespace ZombeezGameJam.Entities.Player
 
             currentWeapon = 0;
             UpdatePlayerState(PlayerStates.Idle);
+        }
+
+        public override void ApplyEntityStats()
+        {
+            base.ApplyEntityStats();
+            //AnimatorOverrideController animatorOverrideController = new AnimatorOverrideController(stats.Controller);
+            
+            animationScript._animator.runtimeAnimatorController = stats.Controller;
         }
 
         internal void UpdatePlayerState(PlayerStates a_newState)
