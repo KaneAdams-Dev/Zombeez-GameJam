@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Player
@@ -11,9 +9,10 @@ namespace ZombeezGameJam.Entities.Player
         private float _xDirection;
         public float Direction
         {
-            //get => _direction.x;
             set => _xDirection = value;
         }
+
+        #region Unity Methods
 
         private void Awake()
         {
@@ -21,16 +20,10 @@ namespace ZombeezGameJam.Entities.Player
         }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             transform.localScale = new Vector3(_xDirection, 1, 1);
             Destroy(gameObject, 1f);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         private void FixedUpdate()
@@ -47,5 +40,7 @@ namespace ZombeezGameJam.Entities.Player
 
             Destroy(gameObject);
         }
+
+        #endregion Unity Methods
     }
 }

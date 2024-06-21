@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 namespace ZombeezGameJam.Entities.Player
 {
-    public class PlayerInputScript : MonoBehaviour
+    public class PlayerInputHandler : MonoBehaviour
     {
         [Header("Script References")]
-        [SerializeField] private PlayerScript _playerScript;
+        [SerializeField] private Player _playerScript;
 
         internal bool isFacingLeft;
         internal bool isFiring;
@@ -54,15 +54,14 @@ namespace ZombeezGameJam.Entities.Player
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
             xMoveInput = context.ReadValue<float>();
-            //moveInput.y = 0;
 
-            isFacingLeft = xMoveInput < 0;//moveInput.x < 0;
+            isFacingLeft = xMoveInput < 0;
             _playerScript.UpdatePlayerState(PlayerStates.Run);
         }
 
         private void OnMovementCanceled(InputAction.CallbackContext context)
         {
-            xMoveInput = 0;//moveInput = Vector2.zero;
+            xMoveInput = 0;
             _playerScript.UpdatePlayerState(PlayerStates.Idle);
         }
 
@@ -77,7 +76,6 @@ namespace ZombeezGameJam.Entities.Player
             {
                 _playerScript.weaponScript.FireWeapon();
             }
-
         }
 
         private bool CanPlayerFire()

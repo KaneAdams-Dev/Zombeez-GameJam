@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Player
 {
-    [RequireComponent(typeof(PlayerScript), typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Player), typeof(Rigidbody2D))]
     public class PlayerMovementScript : MonoBehaviour
     {
-        [SerializeField] private PlayerScript _playerScript;
+        [SerializeField] private Player _playerScript;
 
         [Space(5)]
         [SerializeField] private LayerMask _jumpableLayers;

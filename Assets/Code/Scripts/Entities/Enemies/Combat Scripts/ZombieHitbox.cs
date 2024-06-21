@@ -1,25 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Enemies
 {
     public class ZombieHitbox : MonoBehaviour
     {
-        [SerializeField] private ZombiesScript _zombieScript;
+        [SerializeField] private Zombie _zombieScript;
 
         internal bool isPlayerHit;
 
+        #region Unity Methods
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             isPlayerHit = false;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -35,5 +29,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 player.TakeDamage(_zombieScript.AttackStength);
             }
         }
+
+        #endregion Unity Methods
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Enemies
@@ -12,7 +10,7 @@ namespace ZombeezGameJam.Entities.Enemies
         Attack,
     }
 
-    public class ZombiesScript : BaseEntity
+    public class Zombie : BaseEntity
     {
         [Header("Script References")]
         [SerializeField] internal ZombieCombatScript combatScript;
@@ -23,32 +21,54 @@ namespace ZombeezGameJam.Entities.Enemies
         [SerializeField] private GameObject _weaponDrop;
 
         [SerializeField] internal Transform _target;
-        internal Transform _player;
+        internal GameObject _player;
 
         [SerializeField] internal float _attackRange;
         [SerializeField] internal float _chaseRange;
+        [SerializeField] internal float _chaseBuffer;
 
         [SerializeField] internal float movementSpeed = 100f;
 
         internal ZombieStates currentState;
 
+        #region Unity Methods
+
         public override void Start()
         {
             base.Start();
-            UpdateZombieState(ZombieStates.Idle);
+
+            UpdateZombieState(ZombieStates.Patrol);
         }
 
-        public override void Update()
+        private void Update()
         {
-            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _player = GameObject.FindGameObjectWithTag("Player");
             if (_player != null)
             {
-                if (Vector3.Distance(_player.position, transform.position) < _chaseRange)
+                float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+                if (distanceToPlayer < _chaseRange)
                 {
-                    _target = _player;
+                    if (distanceToPlayer < _attackRange)
+                    {
+                        combatScript.Attack();
+                    } else
+                    {
+                        _target = _player.transform;
+                        UpdateZombieState(ZombieStates.Chase);
+                    }
+                } else if (distanceToPlayer > (_chaseRange + _chaseBuffer))
+                {
+                    UpdateZombieState(ZombieStates.Patrol);
                 }
+            } else
+            {
+                UpdateZombieState(ZombieStates.Patrol);
             }
         }
+
+        #endregion Unity Methods
+
+        #region Custom Methods
 
         internal void UpdateZombieState(ZombieStates a_newState)
         {
@@ -59,12 +79,20 @@ namespace ZombeezGameJam.Entities.Enemies
 
             currentState = a_newState;
             animationScript.UpdateAnimationState();
+
             if (currentState == ZombieStates.Patrol)
             {
                 movementScript.StartRoam();
             }
         }
 
+        internal float IsFacingTarget()
+        {
+            //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
+            float direction = _target.position.x - transform.position.x;
+            return direction / Mathf.Abs(direction);
+        }
+        
         public override void OnDeath()
         {
             base.OnDeath();
@@ -78,12 +106,6 @@ namespace ZombeezGameJam.Entities.Enemies
             }
         }
 
-        internal float IsFacingTarget()
-        {
-            //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
-            float direction = _target.position.x - transform.position.x;
-            Debug.Log(direction / Mathf.Abs(direction));
-            return direction / Mathf.Abs(direction);
-        }
+        #endregion Custom Methods
     }
 }

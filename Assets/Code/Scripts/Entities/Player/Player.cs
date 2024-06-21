@@ -25,10 +25,10 @@ namespace ZombeezGameJam.Entities.Player
         LMG,
     }
 
-    public class PlayerScript : BaseEntity
+    public class Player : BaseEntity
     {
         [Header("Script References")]
-        [SerializeField] internal PlayerInputScript inputScript;
+        [SerializeField] internal PlayerInputHandler inputScript;
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerAnimationScript animationScript;
         [SerializeField] internal WeaponScript weaponScript;
@@ -41,6 +41,8 @@ namespace ZombeezGameJam.Entities.Player
         internal PlayerStates currentState;
         public PlayerWeapons currentWeapon;
 
+        #region Unity Methods
+
         public override void Start()
         {
             base.Start();
@@ -49,10 +51,13 @@ namespace ZombeezGameJam.Entities.Player
             UpdatePlayerState(PlayerStates.Idle);
         }
 
+        #endregion Unity Methods
+
+        #region Custom Methods
+
         public override void ApplyEntityStats()
         {
             base.ApplyEntityStats();
-            //AnimatorOverrideController animatorOverrideController = new AnimatorOverrideController(stats.Controller);
             
             animationScript._animator.runtimeAnimatorController = stats.Controller;
         }
@@ -72,5 +77,7 @@ namespace ZombeezGameJam.Entities.Player
             currentState = a_newState;
             animationScript.UpdateAnimationState();
         }
+
+        #endregion Custom Methods
     }
 }

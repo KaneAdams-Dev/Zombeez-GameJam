@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Enemies
@@ -7,11 +5,13 @@ namespace ZombeezGameJam.Entities.Enemies
     [RequireComponent(typeof(Animator))]
     public class ZombieAnimationScript : MonoBehaviour
     {
-        [SerializeField] private ZombiesScript _zombieScript;
+        [SerializeField] private Zombie _zombieScript;
 
         internal Animator _animator;
 
         private string _currentAnimation;
+
+        #region Unity Methods
 
         private void Awake()
         {
@@ -19,16 +19,17 @@ namespace ZombeezGameJam.Entities.Enemies
         }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-
+            if (_zombieScript.currentState == ZombieStates.Patrol)
+            {
+                _animator.Play(_currentAnimation, 0, Random.value);
+            }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+        #endregion Unity Methods
 
-        }
+        #region Custom Methods
 
         public void UpdateAnimationState()
         {
@@ -44,6 +45,17 @@ namespace ZombeezGameJam.Entities.Enemies
                 _currentAnimation = newAnimation;
                 _animator.Play(_currentAnimation);
             }
+
+            if (_zombieScript.currentState == ZombieStates.Chase)
+            {
+                Debug.Log(_zombieScript.gameObject.name + " Chasing " + _zombieScript._target.gameObject.name);
+                _animator.speed = 1.5f;
+            } else
+            {
+                _animator.speed = 1f;
+            }
         }
+
+        #endregion Custom Methods
     }
 }

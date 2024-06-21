@@ -5,7 +5,7 @@ namespace ZombeezGameJam.Entities.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationScript : MonoBehaviour
     {
-        [SerializeField] private PlayerScript _playerScript;
+        [SerializeField] private Player _playerScript;
 
         internal Animator _animator;
 
@@ -17,12 +17,6 @@ namespace ZombeezGameJam.Entities.Player
         {
             _animator = GetComponent<Animator>();
         }
-
-        //private void Start()
-        //{
-        //    animatorOverrideController = new AnimatorOverrideController(_playerScript.stats.Controller);
-        //    _animator.runtimeAnimatorController = animatorOverrideController;
-        //}
 
         #endregion Unity Methods
 

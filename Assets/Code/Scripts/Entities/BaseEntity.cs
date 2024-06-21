@@ -22,31 +22,12 @@ namespace ZombeezGameJam.Entities
 
         #region Unity Methods
 
-        private void Awake()
-        {
-            //_renderer = GetComponentInChildren<SpriteRenderer>();
-        }
-
         // Start is called before the first frame update
         public  virtual void Start()
         {
             ApplyEntityStats();
             _currentHealth = _maxHealth;
             ReturnToDefaultColour();
-        }
-
-        // Update is called once per frame
-        public virtual void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                TakeDamage(10);
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                HealDamage(5);
-            }
         }
 
         #endregion Unity Methods
@@ -106,6 +87,7 @@ namespace ZombeezGameJam.Entities
                 GameObject corpse = Instantiate(_corpsePrefab, transform.position, Quaternion.identity);
                 corpse.transform.localScale = transform.localScale;
             }
+
             Destroy(gameObject);
         }
 

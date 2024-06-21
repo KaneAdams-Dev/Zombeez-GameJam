@@ -1,22 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Enemies
 {
     public class ZombieCombatScript : MonoBehaviour
     {
-        [SerializeField] private ZombiesScript _zombieScript;
+        [SerializeField] private Zombie _zombieScript;
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            //_target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        #region Unity Methods
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (_zombieScript._target == null)
             {
@@ -27,9 +20,6 @@ namespace ZombeezGameJam.Entities.Enemies
             if (IsTargetInRange() /*&& _zombieScript.IsFacingTarget()*/)
             {
                 Attack();
-            } else if (_zombieScript.currentState != ZombieStates.Attack) 
-            {
-                _zombieScript.UpdateZombieState(ZombieStates.Patrol);
             }
         }
 
@@ -40,16 +30,21 @@ namespace ZombeezGameJam.Entities.Enemies
             
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _zombieScript._chaseRange);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, _zombieScript._chaseRange + _zombieScript._chaseBuffer);
         }
 
-        bool IsTargetInRange()
+        #endregion Unity Methods
+
+        #region Custom Methods
+
+        private bool IsTargetInRange()
         {
             return Vector3.Distance(transform.position, _zombieScript._target.position) <= _zombieScript._attackRange;
         }
 
-        
-
-        void Attack()
+        internal void Attack()
         {
             if (_zombieScript.currentState == ZombieStates.Attack)
             {
@@ -59,10 +54,12 @@ namespace ZombeezGameJam.Entities.Enemies
             Invoke(nameof(ResetAttack), _zombieScript.animationScript._animator.GetCurrentAnimatorClipInfo(0).Length);
         }
 
-        void ResetAttack()
+        private void ResetAttack()
         {
             _zombieScript.UpdateZombieState(ZombieStates.Idle);
             _zombieScript.hitboxScript.isPlayerHit = false;
         }
+
+        #endregion Custom Methods
     }
 }

@@ -47,13 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5769613846208520599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7b386eea2fd874994f43196fc9c7f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b40795baafcdce49aac2986751bcd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 7876322686838413957}
   _maxHealth: 100
   _defense: 0
-  _attackStrength: 34
+  _attackStrength: 5
   _corpsePrefab: {fileID: 7710702260405054554, guid: 124e865333aff1f4d94bb84e1d57155b, type: 3}
   combatScript: {fileID: 5409927162261797511}
   animationScript: {fileID: 4591846059741718633}
@@ -61,9 +61,9 @@ MonoBehaviour:
   hitboxScript: {fileID: 2281086907157854425}
   _weaponDrop: {fileID: 1979191887872998920, guid: 2730d66f7cc52194882143c4d3777d81, type: 3}
   _target: {fileID: 0}
-  _attackRange: 0.22
-  _chaseRange: 0
-  movementSpeed: 5
+  _attackRange: 0.2
+  _chaseRange: 1
+  movementSpeed: 20
 --- !u!114 &5409927162261797511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7876322686838413957}
   - component: {fileID: 4174314123244738084}
   - component: {fileID: 4591846059741718633}
+  - component: {fileID: 1519343553872300945}
   m_Layer: 9
   m_Name: GFX
   m_TagString: Untagged
@@ -320,6 +321,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombieScript: {fileID: 4649143475314225477}
+--- !u!114 &1519343553872300945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7850732168809845262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91484942b76634d4b9e37bfec1ae42ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zombie: {fileID: 4649143475314225477}
 --- !u!1 &7938987134536097387
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,60 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Enemies
 {
     public class ZombieMovementScript : MonoBehaviour
     {
-        [SerializeField] private ZombiesScript _zombieScipt;
-
-        //private bool isFacingRight;
+        [SerializeField] private Zombie _zombieScipt;
 
         [SerializeField] private Transform patrolStartPosition;
         [SerializeField] private Transform patrolEndPosition;
 
         private Rigidbody2D _rbody;
 
+        [SerializeField] private LayerMask _platformLayer;
+
+        private readonly float _raySize = 0.32f;
+
+        #region Unity Methods
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             _rbody = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            //isFacingRight = _zombieScipt.IsFacingTarget();
-        }
-
-        private void FixedUpdate()
-        {
-            if (_zombieScipt.currentState != ZombieStates.Attack)
+            if (!CheckIfGrounded())
             {
-                MoveZombie();
+                _rbody.constraints = RigidbodyConstraints2D.None;
             }
         }
 
         private void OnDrawGizmos()
         {
+            Gizmos.color = Color.magenta;
             Gizmos.DrawLine(patrolStartPosition.position, patrolEndPosition.position);
         }
+
+        #endregion Unity Methods
+
+        #region Custom Methods
 
         public void StartRoam()
         {
             _zombieScipt._target = (Random.value > 0.5) ? patrolStartPosition : patrolEndPosition;
         }
 
-        private void MoveZombie()
+        internal void MoveZombie()
         {
-            transform.localScale = new Vector2(_zombieScipt.IsFacingTarget(), transform.localScale.y);//isFacingRight ? new Vector2(1, transform.localScale.y) : new Vector2(-1, transform.localScale.y);
+            transform.localScale = new Vector2(_zombieScipt.IsFacingTarget(), transform.localScale.y);
 
             float xVelocity = _zombieScipt.movementSpeed * Time.fixedDeltaTime * transform.localScale.x;
             _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
 
             if (_zombieScipt.currentState == ZombieStates.Patrol)
             {
-                Debug.Log(Vector3.Distance(_zombieScipt._target.position, transform.position));
                 if (Vector3.Distance(_zombieScipt._target.position, transform.position) < 0.3f)
                 {
                     if (_zombieScipt._target == patrolStartPosition)
@@ -66,9 +67,18 @@ namespace ZombeezGameJam.Entities.Enemies
                     }
                 }
             }
-
-            //float xVelocity = _playerScript.inputScript.xMoveInput * _playerScript.movementSpeed * Time.fixedDeltaTime;
-            //_rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
         }
+
+        internal void StopMovingZombie()
+        {
+            _rbody.velocity = Vector2.zero;
+        }
+
+        private bool CheckIfGrounded()
+        {
+            return Physics2D.Raycast(transform.position, Vector2.down, _raySize, _platformLayer);
+        }
+
+        #endregion Custom Methods
     }
 }

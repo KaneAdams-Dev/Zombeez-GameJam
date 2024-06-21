@@ -12,13 +12,14 @@ namespace ZombeezGameJam
 
         [SerializeField] private float _bopSpeed;
 
+        #region Unity Methods
+
         private void Start()
         {
             _minY = transform.position.y - 0.05f;
             _maxY = transform.position.y + 0.05f;
 
             Vector3 initialPosition = new Vector3(transform.position.x, Random.Range(_minY, _maxY), transform.position.z);
-
             transform.position = initialPosition;
         }
 
@@ -34,11 +35,13 @@ namespace ZombeezGameJam
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out PlayerScript playerScript))
+            if (collision.gameObject.TryGetComponent(out Player playerScript))
             {
                 playerScript.currentWeapon = _droppedWeapon;
                 Destroy(gameObject);
             }
         }
+
+        #endregion Unity Methods
     }
 }

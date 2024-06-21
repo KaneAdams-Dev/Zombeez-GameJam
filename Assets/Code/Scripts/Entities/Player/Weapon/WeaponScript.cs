@@ -4,12 +4,15 @@ namespace ZombeezGameJam.Entities.Player
 {
     public class WeaponScript : MonoBehaviour
     {
-        [SerializeField] private PlayerScript _playerScript;
+        [SerializeField] private Player _playerScript;
 
         [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private ProjectileScript _bullet;
 
         [SerializeField] private Transform _spawnPoint;
+
+
+        #region Custom Methods
 
         public void FireWeapon()
         {
@@ -18,12 +21,23 @@ namespace ZombeezGameJam.Entities.Player
                 return;
             }
 
+            ShowMuzzleFlash();
+            FireBullet();
+        }
+
+        private void ShowMuzzleFlash()
+        {
             GameObject flash = Instantiate(_muzzleFlash, _spawnPoint);
             float muzzleFlashDuration = flash.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
             Destroy(flash, muzzleFlashDuration);
-
-            ProjectileScript bullet = Instantiate(_bullet.gameObject, _spawnPoint.position, Quaternion.identity).GetComponent<ProjectileScript>();
-            bullet.Direction = transform.localScale.x;
         }
+
+        private void FireBullet()
+        {
+            ProjectileScript bulletInstance = Instantiate(_bullet, _spawnPoint.position, Quaternion.identity);
+            bulletInstance.Direction = transform.localScale.x;
+        }
+
+        #endregion Custom Methods
     }
 }
