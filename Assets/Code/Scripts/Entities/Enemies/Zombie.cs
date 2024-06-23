@@ -21,6 +21,7 @@ namespace ZombeezGameJam.Entities.Enemies
         [SerializeField] private GameObject _weaponDrop;
 
         [SerializeField] internal Transform _target;
+        [SerializeField] private LayerMask _targetLayers;
         internal GameObject _player;
 
         [SerializeField] internal float _attackRange;
@@ -30,6 +31,8 @@ namespace ZombeezGameJam.Entities.Enemies
         [SerializeField] internal float movementSpeed = 100f;
 
         internal ZombieStates currentState;
+
+        private Collider2D[] _entityOverlaps;
 
         #region Unity Methods
 
@@ -42,28 +45,57 @@ namespace ZombeezGameJam.Entities.Enemies
 
         private void Update()
         {
-            _player = GameObject.FindGameObjectWithTag("Player");
-            if (_player != null)
+            _entityOverlaps = Physics2D.OverlapCircleAll(transform.position, _chaseRange + _chaseBuffer, _targetLayers.value);
+
+            if (_entityOverlaps.Length == 0)
             {
-                float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
-                if (distanceToPlayer < _chaseRange)
+                UpdateZombieState(ZombieStates.Patrol);
+                return;
+            }
+
+            _player = FindClosestTarget(_entityOverlaps);
+
+            //foreach(Collider2D entity in _entityOverlaps)
+            //{
+            float distanceToEntity = Vector3.Distance(_player.transform.position, transform.position);
+            if (distanceToEntity < _chaseRange)
+            {
+                if (distanceToEntity < _attackRange)
                 {
-                    if (distanceToPlayer < _attackRange)
-                    {
-                        combatScript.Attack();
-                    } else
-                    {
-                        _target = _player.transform;
-                        UpdateZombieState(ZombieStates.Chase);
-                    }
-                } else if (distanceToPlayer > (_chaseRange + _chaseBuffer))
+                    combatScript.Attack();
+                } else
                 {
-                    UpdateZombieState(ZombieStates.Patrol);
+                    _target = _player.transform;
+                    UpdateZombieState(ZombieStates.Chase);
                 }
-            } else
+            } else if (distanceToEntity > (_chaseRange + _chaseBuffer))
             {
                 UpdateZombieState(ZombieStates.Patrol);
             }
+            //}
+
+            //_player = GameObject.FindGameObjectWithTag("Player");
+            //if (_player != null)
+            //{
+            //    float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+            //    if (distanceToPlayer < _chaseRange)
+            //    {
+            //        if (distanceToPlayer < _attackRange)
+            //        {
+            //            combatScript.Attack();
+            //        } else
+            //        {
+            //            _target = _player.transform;
+            //            UpdateZombieState(ZombieStates.Chase);
+            //        }
+            //    } else if (distanceToPlayer > (_chaseRange + _chaseBuffer))
+            //    {
+            //        UpdateZombieState(ZombieStates.Patrol);
+            //    }
+            //} else
+            //{
+            //    UpdateZombieState(ZombieStates.Patrol);
+            //}
         }
 
         #endregion Unity Methods
@@ -86,13 +118,32 @@ namespace ZombeezGameJam.Entities.Enemies
             }
         }
 
+        internal GameObject FindClosestTarget(Collider2D[] a_potentialTargets)
+        {
+            GameObject closest = null;
+            float closestDistance = 100f;
+
+            foreach (Collider2D target in a_potentialTargets)
+            {
+                float distanceToEntity = Vector3.Distance(target.transform.position, transform.position);
+
+                if (closest == null || distanceToEntity < closestDistance)
+                {
+                    closest = target.gameObject;
+                    closestDistance = distanceToEntity;
+                }
+            }
+
+            return closest;
+        }
+
         internal float IsFacingTarget()
         {
             //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
             float direction = _target.position.x - transform.position.x;
             return direction / Mathf.Abs(direction);
         }
-        
+
         public override void OnDeath()
         {
             base.OnDeath();

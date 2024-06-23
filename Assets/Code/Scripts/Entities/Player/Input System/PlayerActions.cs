@@ -55,6 +55,15 @@ namespace ZombeezGameJam
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""42e576dc-2e0f-4804-90cb-aab621568c8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -266,6 +275,28 @@ namespace ZombeezGameJam
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8871e8c0-23f7-4e60-a722-6cc3cbf788dd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1b525e5-f3f5-4a45-8c55-b47c99ed77e1"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -277,6 +308,7 @@ namespace ZombeezGameJam
             m_Player_Map_Movement = m_Player_Map.FindAction("Movement", throwIfNotFound: true);
             m_Player_Map_Jump = m_Player_Map.FindAction("Jump", throwIfNotFound: true);
             m_Player_Map_Fire = m_Player_Map.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Map_Interact = m_Player_Map.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -341,6 +373,7 @@ namespace ZombeezGameJam
         private readonly InputAction m_Player_Map_Movement;
         private readonly InputAction m_Player_Map_Jump;
         private readonly InputAction m_Player_Map_Fire;
+        private readonly InputAction m_Player_Map_Interact;
         public struct Player_MapActions
         {
             private @PlayerActions m_Wrapper;
@@ -348,6 +381,7 @@ namespace ZombeezGameJam
             public InputAction @Movement => m_Wrapper.m_Player_Map_Movement;
             public InputAction @Jump => m_Wrapper.m_Player_Map_Jump;
             public InputAction @Fire => m_Wrapper.m_Player_Map_Fire;
+            public InputAction @Interact => m_Wrapper.m_Player_Map_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Player_Map; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -366,6 +400,9 @@ namespace ZombeezGameJam
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             private void UnregisterCallbacks(IPlayer_MapActions instance)
@@ -379,6 +416,9 @@ namespace ZombeezGameJam
                 @Fire.started -= instance.OnFire;
                 @Fire.performed -= instance.OnFire;
                 @Fire.canceled -= instance.OnFire;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             public void RemoveCallbacks(IPlayer_MapActions instance)
@@ -401,6 +441,7 @@ namespace ZombeezGameJam
             void OnMovement(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

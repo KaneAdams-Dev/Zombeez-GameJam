@@ -1,0 +1,17 @@
+{
+    "name": "Weapons",
+    "rootNamespace": "ZombeezGameJam.Weapons",
+    "references": [
+        "GUID:b38b9821dfcbe024fac2c9f80ae1a471",
+        "GUID:c3ef8393666eeab4cba8c66adf69f3d0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

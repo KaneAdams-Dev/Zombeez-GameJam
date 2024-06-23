@@ -23,7 +23,7 @@ namespace ZombeezGameJam.Entities.Enemies
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _zombieScript._attackRange);

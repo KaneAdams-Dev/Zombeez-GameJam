@@ -17,8 +17,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
         #region Unity Methods
 
-        // Start is called before the first frame update
-        private void Start()
+        private void Awake()
         {
             _rbody = GetComponent<Rigidbody2D>();
         }
@@ -32,7 +31,7 @@ namespace ZombeezGameJam.Entities.Enemies
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(patrolStartPosition.position, patrolEndPosition.position);

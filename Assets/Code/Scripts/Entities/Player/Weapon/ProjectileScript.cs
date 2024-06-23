@@ -12,6 +12,8 @@ namespace ZombeezGameJam.Entities.Player
             set => _xDirection = value;
         }
 
+        [SerializeField] private float _bulletDropOff = 0.5f;
+
         #region Unity Methods
 
         private void Awake()
@@ -23,7 +25,7 @@ namespace ZombeezGameJam.Entities.Player
         private void Start()
         {
             transform.localScale = new Vector3(_xDirection, 1, 1);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, _bulletDropOff);
         }
 
         private void FixedUpdate()

@@ -14,15 +14,15 @@ namespace ZombeezGameJam.Entities.Player
     public enum PlayerWeapons
     {
         Unarmed,
-        Revolver1,
-        Pistol,
-        Revolver2,
-        SawedoffShotgun,
-        Shotgun1,
-        Shotgun2,
+        PolicePistol,
+        Glock,
+        Magnum,
+        SawnOff,
+        PumpAction,
+        AssualtShotgun,
         Uzi,
-        AK,
-        LMG,
+        AK47,
+        M60,
     }
 
     public class Player : BaseEntity
@@ -31,6 +31,7 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] internal PlayerInputHandler inputScript;
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerAnimationScript animationScript;
+        [SerializeField] internal PlayerInteractorScript interactor;
         [SerializeField] internal WeaponScript weaponScript;
         [SerializeField] internal BaseEntityStats stats;
 
@@ -76,6 +77,18 @@ namespace ZombeezGameJam.Entities.Player
 
             currentState = a_newState;
             animationScript.UpdateAnimationState();
+        }
+
+        public void EquipWeapon(PlayerWeapons a_newWeapon)
+        {
+            currentWeapon = a_newWeapon;
+            animationScript.UpdateAnimationState();
+        }
+
+        public override void OnDeath()
+        {
+            base.OnDeath();
+            GameManager.instance.RespawnPlayer();
         }
 
         #endregion Custom Methods

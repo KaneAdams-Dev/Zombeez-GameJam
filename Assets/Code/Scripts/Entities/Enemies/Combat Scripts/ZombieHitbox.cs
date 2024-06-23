@@ -23,10 +23,10 @@ namespace ZombeezGameJam.Entities.Enemies
                 return;
             }
 
-            if (collision.gameObject.TryGetComponent(out BaseEntity player) && collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.TryGetComponent(out BaseEntity entity) && /*collision.gameObject.CompareTag("Player")*/collision.transform == _zombieScript._target)
             {
                 isPlayerHit = true;
-                player.TakeDamage(_zombieScript.AttackStength);
+                entity.TakeDamage(_zombieScript.AttackStength);
             }
         }
 

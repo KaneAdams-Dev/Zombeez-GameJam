@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5598268940460466594}
   - component: {fileID: 5751264298733402995}
   - component: {fileID: 1437250639798618609}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: weapon_icon_1_101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1500907133
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01d7b66f1515d0e47988b6c30930a4cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

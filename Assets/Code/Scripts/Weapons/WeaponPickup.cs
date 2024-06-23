@@ -1,7 +1,7 @@
 using UnityEngine;
 using ZombeezGameJam.Entities.Player;
 
-namespace ZombeezGameJam
+namespace ZombeezGameJam.Weapons
 {
     public class WeaponPickup : MonoBehaviour
     {
@@ -16,11 +16,11 @@ namespace ZombeezGameJam
 
         private void Start()
         {
-            _minY = transform.position.y - 0.05f;
-            _maxY = transform.position.y + 0.05f;
+            _minY = transform.localPosition.y - 0.05f;
+            _maxY = transform.localPosition.y + 0.05f;
 
-            Vector3 initialPosition = new Vector3(transform.position.x, Random.Range(_minY, _maxY), transform.position.z);
-            transform.position = initialPosition;
+            Vector3 initialPosition = new Vector3(transform.localPosition.x, Random.Range(_minY, _maxY), transform.localPosition.z);
+            transform.localPosition = initialPosition;
         }
 
         private void FixedUpdate()
@@ -35,12 +35,24 @@ namespace ZombeezGameJam
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Player playerScript))
+            if (collision.TryGetComponent(out Player player))
             {
-                playerScript.currentWeapon = _droppedWeapon;
+                player.EquipWeapon(_droppedWeapon);
+                //Player
                 Destroy(gameObject);
             }
         }
+
+        //public void Interact()
+        //{
+        //    //Player player = FindObjectOfType<Player>();
+        //    //player.currentWeapon = _droppedWeapon;
+        //    //
+        //    ////a_player.currentWeapon = _droppedWeapon;
+        //    ///
+        //    FindObjectOfType<Player>().EquipWeapon(_droppedWeapon);
+        //    Destroy(gameObject);
+        //}
 
         #endregion Unity Methods
     }

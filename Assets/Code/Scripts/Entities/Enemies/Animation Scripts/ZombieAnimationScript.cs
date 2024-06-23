@@ -48,7 +48,6 @@ namespace ZombeezGameJam.Entities.Enemies
 
             if (_zombieScript.currentState == ZombieStates.Chase)
             {
-                Debug.Log(_zombieScript.gameObject.name + " Chasing " + _zombieScript._target.gameObject.name);
                 _animator.speed = 1.5f;
             } else
             {

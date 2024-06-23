@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Survivors
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Player
   - Bullets
   - Enemies
-  - 
-  - 
+  - NPC
+  - Interactable
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 1641497243
+    locked: 0
+  - name: Survivors
+    uniqueID: 787150233
     locked: 0
   - name: Pickups
     uniqueID: 1500907133

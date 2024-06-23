@@ -11,7 +11,6 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] private Player _playerScript;
 
         internal bool isFacingLeft;
-        internal bool isFiring;
         internal float xMoveInput;
 
         private PlayerActions _playerActions;
@@ -34,6 +33,7 @@ namespace ZombeezGameJam.Entities.Player
 
             _playerActionsMap.Jump.performed += OnJumpPerformed;
             _playerActionsMap.Fire.performed += OnFirePerformed;
+            _playerActionsMap.Interact.performed += OnInteractPerformed;
         }
 
         private void OnDisable()
@@ -45,6 +45,7 @@ namespace ZombeezGameJam.Entities.Player
 
             _playerActionsMap.Jump.performed -= OnJumpPerformed;
             _playerActionsMap.Fire.performed -= OnFirePerformed;
+            _playerActionsMap.Interact.performed -= OnInteractPerformed;
         }
 
         #endregion Unity Methods
@@ -85,6 +86,12 @@ namespace ZombeezGameJam.Entities.Player
             bool isInValidState = invalidStates.Contains(_playerScript.currentState);
 
             return !(isUnarmed || isInValidState);
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("Interact button pressed");
+            _playerScript.interactor.CheckForInteractions();
         }
 
         #endregion Custom Methods
