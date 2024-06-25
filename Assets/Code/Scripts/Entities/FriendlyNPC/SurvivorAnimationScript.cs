@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombeezGameJam.Entities.Survivors
@@ -37,6 +35,8 @@ namespace ZombeezGameJam.Entities.Survivors
             string newAnimation = _survivorScript.currentState switch
             {
                 SurvivorStates.MoveToHordeCheckpoint => $"Weapon0_Run",
+                SurvivorStates.MoveToLevelFinish => $"Weapon0_Run",
+                SurvivorStates.Flee => $"Weapon0_Run",
                 SurvivorStates.WaitingAtCheckpoint => $"Weapon0_Idle",
                 _ => $"Weapon0_{_survivorScript.currentState}",
             };
@@ -44,7 +44,7 @@ namespace ZombeezGameJam.Entities.Survivors
             if (_currentAnimation != newAnimation)
             {
                 _currentAnimation = newAnimation;
-                animator.Play(_currentAnimation);
+                animator.Play(_currentAnimation, 0, Random.value);
             }
         }
     }

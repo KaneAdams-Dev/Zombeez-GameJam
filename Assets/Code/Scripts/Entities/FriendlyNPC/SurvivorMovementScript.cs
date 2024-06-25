@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace ZombeezGameJam.Entities.Survivors
 {
@@ -13,6 +10,11 @@ namespace ZombeezGameJam.Entities.Survivors
         private Rigidbody2D _rbody;
 
         [SerializeField] internal Transform _hordePosition;
+        [SerializeField] internal Transform _finishPosition;
+        internal Vector3 _desiredPosition;
+
+        [SerializeField] internal Transform _boundaryStart;
+        [SerializeField] internal Transform _boundaryEnd;
 
         private void Awake()
         {
@@ -28,7 +30,11 @@ namespace ZombeezGameJam.Entities.Survivors
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.H) && _survivorScript.currentState == SurvivorStates.WaitingAtCheckpoint)
+            {
+                _desiredPosition = _finishPosition.position;
+                _survivorScript.UpdateSurvivorStates(SurvivorStates.MoveToLevelFinish);
+            }
         }
 
         private void FixedUpdate()
@@ -47,28 +53,59 @@ namespace ZombeezGameJam.Entities.Survivors
 
             if (_survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint)
             {
-                if (Vector3.Distance(_hordePosition.position, transform.position) < 0.5f)
+                //Vector3 desiredPosition = SetDesiredPosition();
+                Debug.Log(gameObject.name + " " + _desiredPosition);
+                if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
                     _rbody.velocity = Vector2.zero;
                     transform.localScale = Vector3.one;
                     _survivorScript.UpdateSurvivorStates(SurvivorStates.WaitingAtCheckpoint);
+                    GameManager.instance.AddSurvivorToHorde(gameObject);
+
                     return;
                 }
-                
-                transform.localScale = new Vector3(IsFacingTarget(_hordePosition), transform.localScale.y, transform.localScale.z);
+
+                transform.localScale = new Vector3(IsFacingTarget(_desiredPosition), transform.localScale.y, transform.localScale.z);
+
+            } else if (_survivorScript.currentState == SurvivorStates.MoveToLevelFinish)
+            {
+                Debug.Log(gameObject.name + " " + _desiredPosition);
+                if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
+                {
+                    GameManager.instance.RemoveSurvivorFromHorde(gameObject);
+                    Destroy(gameObject);
+                }
+
+                transform.localScale = new Vector3(IsFacingTarget(_desiredPosition), transform.localScale.y, transform.localScale.z);
+            }else if (_survivorScript.currentState == SurvivorStates.Flee)
+            {
+                Debug.Log(gameObject.name + " " + _desiredPosition);
+                if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
+                {
+                    _rbody.velocity = Vector2.zero;
+                    _survivorScript.UpdateSurvivorStates(SurvivorStates.Idle);
+
+                    return;
+                }
+
+                transform.localScale = new Vector3(IsFacingTarget(_desiredPosition), transform.localScale.y, transform.localScale.z);
             }
         }
 
-        internal float IsFacingTarget(Transform a_target)
+        internal void SetDesiredPosition()
         {
-            //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
-            float direction = a_target.position.x - transform.position.x;
+            _desiredPosition = new Vector3(_hordePosition.position.x + Random.Range(-0.5f, 0.5f), transform.position.y, transform.position.z);
+        }
+
+        internal float IsFacingTarget(Vector3 a_targetToFace)
+        {
+            float direction = a_targetToFace.x - transform.position.x;
             return direction / Mathf.Abs(direction);
         }
 
         private bool CheckIfMoving()
         {
-            return _survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint || _survivorScript.currentState == SurvivorStates.MoveToLevelFinish;
+            return _survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint || _survivorScript.currentState == SurvivorStates.MoveToLevelFinish || _survivorScript.currentState == SurvivorStates.Flee;
         }
     }
 }

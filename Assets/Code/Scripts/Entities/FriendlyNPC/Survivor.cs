@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ZombeezGameJam.Interfaces;
 
@@ -8,6 +6,7 @@ namespace ZombeezGameJam.Entities.Survivors
     public enum SurvivorStates
     {
         Idle,
+        Flee,
         MoveToHordeCheckpoint,
         WaitingAtCheckpoint,
         MoveToLevelFinish,
@@ -50,6 +49,14 @@ namespace ZombeezGameJam.Entities.Survivors
 
             currentState = a_newState;
 
+            if (currentState == SurvivorStates.MoveToLevelFinish)
+            {
+                movementSpeed = 100;
+            } else if (currentState == SurvivorStates.Flee || currentState == SurvivorStates.MoveToHordeCheckpoint)
+            {
+                movementSpeed = 150;
+            }
+
             animationScript.UpdateAnimationState();
         }
 
@@ -57,6 +64,7 @@ namespace ZombeezGameJam.Entities.Survivors
         {
             if (currentState != SurvivorStates.WaitingAtCheckpoint)
             {
+                moveScript.SetDesiredPosition();
                 UpdateSurvivorStates(SurvivorStates.MoveToHordeCheckpoint);
                 Debug.Log("It shall be done!");
 
@@ -70,10 +78,28 @@ namespace ZombeezGameJam.Entities.Survivors
 
         private void TeleportToCheckpoint()
         {
-            float randomOffset = moveScript._hordePosition.position.x + Random.Range(-0.5f, 0.5f);
-            Vector3 positionInCheckpoint = new Vector3(randomOffset, moveScript._hordePosition.position.y, moveScript._hordePosition.position.z);
+            //float randomOffset = moveScript._hordePosition.position.x + Random.Range(-0.5f, 0.5f);
+            //Vector3 positionInCheckpoint = new Vector3(randomOffset, moveScript._hordePosition.position.y, moveScript._hordePosition.position.z);
 
-            transform.position = positionInCheckpoint;
+            transform.position = moveScript._desiredPosition;
+        }
+
+        public override void OnDeath()
+        {
+            base.OnDeath();
+            GameManager.instance.RemoveSurvivorFromHorde(gameObject);
+        }
+
+        public override void TakeDamage(int a_damageAmount)
+        {
+            base.TakeDamage(a_damageAmount);
+
+            if (currentState == SurvivorStates.Idle)
+            {
+                UpdateSurvivorStates(SurvivorStates.Flee);
+                moveScript._desiredPosition = new Vector3(Random.Range(moveScript._boundaryStart.position.x, moveScript._boundaryEnd.position.x), transform.position.y, transform.position.z);
+                Debug.Log("RUN! " + moveScript._desiredPosition);
+            }
         }
     }
 }

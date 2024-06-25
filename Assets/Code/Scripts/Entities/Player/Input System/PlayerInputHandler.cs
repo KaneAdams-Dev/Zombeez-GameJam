@@ -79,6 +79,12 @@ namespace ZombeezGameJam.Entities.Player
             }
         }
 
+        private void OnInteractPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("Interact button pressed");
+            _playerScript.interactor.CheckForInteractions();
+        }
+
         private bool CanPlayerFire()
         {
             bool isUnarmed = _playerScript.currentWeapon == PlayerWeapons.Unarmed;
@@ -86,12 +92,6 @@ namespace ZombeezGameJam.Entities.Player
             bool isInValidState = invalidStates.Contains(_playerScript.currentState);
 
             return !(isUnarmed || isInValidState);
-        }
-
-        private void OnInteractPerformed(InputAction.CallbackContext context)
-        {
-            Debug.Log("Interact button pressed");
-            _playerScript.interactor.CheckForInteractions();
         }
 
         #endregion Custom Methods

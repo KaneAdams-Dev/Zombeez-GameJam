@@ -39,7 +39,7 @@ namespace ZombeezGameJam.Entities
 
         }
 
-        public void TakeDamage(int a_damageAmount)
+        public virtual void TakeDamage(int a_damageAmount)
         {
             a_damageAmount -= _defense;
             a_damageAmount = Mathf.Max(0, a_damageAmount);

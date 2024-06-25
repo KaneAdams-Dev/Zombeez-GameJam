@@ -3,7 +3,8 @@
     "rootNamespace": "ZombeezGameJam.Entities.Survivors",
     "references": [
         "GUID:b38b9821dfcbe024fac2c9f80ae1a471",
-        "GUID:39114c3e298936443909b07448b4b80d"
+        "GUID:39114c3e298936443909b07448b4b80d",
+        "GUID:f21985510449fc147aef3df85b6d43a1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

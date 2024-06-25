@@ -55,8 +55,6 @@ namespace ZombeezGameJam.Entities.Enemies
 
             _player = FindClosestTarget(_entityOverlaps);
 
-            //foreach(Collider2D entity in _entityOverlaps)
-            //{
             float distanceToEntity = Vector3.Distance(_player.transform.position, transform.position);
             if (distanceToEntity < _chaseRange)
             {
@@ -72,30 +70,6 @@ namespace ZombeezGameJam.Entities.Enemies
             {
                 UpdateZombieState(ZombieStates.Patrol);
             }
-            //}
-
-            //_player = GameObject.FindGameObjectWithTag("Player");
-            //if (_player != null)
-            //{
-            //    float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
-            //    if (distanceToPlayer < _chaseRange)
-            //    {
-            //        if (distanceToPlayer < _attackRange)
-            //        {
-            //            combatScript.Attack();
-            //        } else
-            //        {
-            //            _target = _player.transform;
-            //            UpdateZombieState(ZombieStates.Chase);
-            //        }
-            //    } else if (distanceToPlayer > (_chaseRange + _chaseBuffer))
-            //    {
-            //        UpdateZombieState(ZombieStates.Patrol);
-            //    }
-            //} else
-            //{
-            //    UpdateZombieState(ZombieStates.Patrol);
-            //}
         }
 
         #endregion Unity Methods
@@ -139,7 +113,6 @@ namespace ZombeezGameJam.Entities.Enemies
 
         internal float IsFacingTarget()
         {
-            //float dot = Vector3.Dot(transform.right, (_target.position - transform.position).normalized);
             float direction = _target.position.x - transform.position.x;
             return direction / Mathf.Abs(direction);
         }
