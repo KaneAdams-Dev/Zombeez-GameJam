@@ -30,6 +30,8 @@ namespace ZombeezGameJam.Entities.Enemies
 
         [SerializeField] internal float movementSpeed = 100f;
 
+        [SerializeField] internal BaseEntityStats _stats;
+
         internal ZombieStates currentState;
 
         private Collider2D[] _entityOverlaps;
@@ -45,6 +47,11 @@ namespace ZombeezGameJam.Entities.Enemies
 
         private void Update()
         {
+            if (currentState == ZombieStates.Attack)
+            {
+                return;
+            }
+
             _entityOverlaps = Physics2D.OverlapCircleAll(transform.position, _chaseRange + _chaseBuffer, _targetLayers.value);
 
             if (_entityOverlaps.Length == 0)
@@ -58,18 +65,24 @@ namespace ZombeezGameJam.Entities.Enemies
             float distanceToEntity = Vector3.Distance(_player.transform.position, transform.position);
             if (distanceToEntity < _chaseRange)
             {
+                _target = _player.transform;
+
                 if (distanceToEntity < _attackRange)
                 {
                     combatScript.Attack();
                 } else
                 {
-                    _target = _player.transform;
                     UpdateZombieState(ZombieStates.Chase);
                 }
-            } else if (distanceToEntity > (_chaseRange + _chaseBuffer))
+            } else
             {
-                UpdateZombieState(ZombieStates.Patrol);
+                UpdateZombieState(distanceToEntity > (_chaseRange + _chaseBuffer) ? ZombieStates.Patrol : ZombieStates.Chase);
+
             }
+            //if (distanceToEntity < (_chaseRange + _chaseBuffer))
+            //{
+            //    UpdateZombieState(ZombieStates.Patrol);
+            //}
         }
 
         #endregion Unity Methods

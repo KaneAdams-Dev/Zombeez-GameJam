@@ -56,7 +56,7 @@ MonoBehaviour:
   _maxHealth: 100
   _defense: 0
   _attackStrength: 5
-  _corpsePrefab: {fileID: 0}
+  _corpsePrefab: {fileID: 7710702260405054554, guid: b9347e889bac0cd4db1e160d11d4364d, type: 3}
   inputScript: {fileID: 7259245974570817408}
   movementScript: {fileID: 8790229247361357129}
   animationScript: {fileID: 8323076818452103432}

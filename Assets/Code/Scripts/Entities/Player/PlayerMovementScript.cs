@@ -26,7 +26,7 @@ namespace ZombeezGameJam.Entities.Player
         {
             if (transform.position.y < -1f)
             {
-                _playerScript.OnDeath();
+                _playerScript.OnFall();
             }
 
             if (!CheckIfGrounded() && _playerScript.currentState == PlayerStates.Jump)

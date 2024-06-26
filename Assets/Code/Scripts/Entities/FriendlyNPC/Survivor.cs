@@ -22,6 +22,8 @@ namespace ZombeezGameJam.Entities.Survivors
 
         internal SurvivorStates currentState;
 
+        [SerializeField] internal BaseEntityStats stats;
+
         public override void Start()
         {
             base.Start();
@@ -38,6 +40,12 @@ namespace ZombeezGameJam.Entities.Survivors
                     TeleportToCheckpoint();
                 }
             }
+        }
+
+        public override void ApplyEntityStats()
+        {
+            base.ApplyEntityStats();
+            animationScript.animator.runtimeAnimatorController = stats.Controller;
         }
 
         public void UpdateSurvivorStates(SurvivorStates a_newState)

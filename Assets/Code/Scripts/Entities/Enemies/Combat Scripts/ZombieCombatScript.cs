@@ -17,10 +17,10 @@ namespace ZombeezGameJam.Entities.Enemies
                 return;
             }
             //Debug.Log(_zombieScript.IsFacingTarget());
-            if (IsTargetInRange() /*&& _zombieScript.IsFacingTarget()*/)
-            {
-                Attack();
-            }
+            //if (IsTargetInRange() /*&& _zombieScript.IsFacingTarget()*/)
+            //{
+            //    Attack();
+            //}
         }
 
         private void OnDrawGizmosSelected()
@@ -46,10 +46,12 @@ namespace ZombeezGameJam.Entities.Enemies
 
         internal void Attack()
         {
-            if (_zombieScript.currentState == ZombieStates.Attack)
+            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript._target == null)
             {
                 return;
             }
+            transform.localScale = new Vector2(_zombieScript.IsFacingTarget(), transform.localScale.y);
+
             _zombieScript.UpdateZombieState(ZombieStates.Attack);
             Invoke(nameof(ResetAttack), _zombieScript.animationScript._animator.GetCurrentAnimatorClipInfo(0).Length);
         }

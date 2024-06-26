@@ -59,8 +59,14 @@ namespace ZombeezGameJam.Entities.Player
         public override void ApplyEntityStats()
         {
             base.ApplyEntityStats();
-            
+
+            if (stats is PlayerStats playerStats)
+            {
+                jumpHeight = playerStats.JumpHeight;
+            }
+
             animationScript._animator.runtimeAnimatorController = stats.Controller;
+
         }
 
         internal void UpdatePlayerState(PlayerStates a_newState)
@@ -88,6 +94,12 @@ namespace ZombeezGameJam.Entities.Player
         public override void OnDeath()
         {
             base.OnDeath();
+            GameManager.instance.RespawnPlayer();
+        }
+
+        public override void OnFall()
+        {
+            base.OnFall();
             GameManager.instance.RespawnPlayer();
         }
 

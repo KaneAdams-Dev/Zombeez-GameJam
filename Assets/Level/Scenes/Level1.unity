@@ -445,6 +445,7 @@ MonoBehaviour:
   animationScript: {fileID: 1372913209}
   moveScript: {fileID: 148102341}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 5cef79e306daedc49aa4a3c4caff5b57, type: 2}
 --- !u!4 &148102343
 Transform:
   m_ObjectHideFlags: 0
@@ -841,6 +842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (2)
@@ -977,7 +982,7 @@ Animator:
   m_GameObject: {fileID: 235976366}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1c38652f05822b347a32d63be11b0d7e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1044,7 +1049,7 @@ SpriteRenderer:
   m_SortingLayerID: 787150233
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: -241658417, guid: c839ac769c94dc84d954b261687eb535, type: 3}
+  m_Sprite: {fileID: -650824283, guid: 87af0c6b5665cd84581251f60d03b754, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1390,6 +1395,7 @@ MonoBehaviour:
   animationScript: {fileID: 419342281}
   moveScript: {fileID: 332453598}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 163aa310616014942aa46f0fe360edb8, type: 2}
 --- !u!4 &332453600
 Transform:
   m_ObjectHideFlags: 0
@@ -1463,6 +1469,7 @@ MonoBehaviour:
   animationScript: {fileID: 1532751466}
   moveScript: {fileID: 342270635}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 5cef79e306daedc49aa4a3c4caff5b57, type: 2}
 --- !u!50 &342270632
 Rigidbody2D:
   serializedVersion: 4
@@ -1752,6 +1759,7 @@ MonoBehaviour:
   animationScript: {fileID: 1689529011}
   moveScript: {fileID: 344072488}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 743aee000f7eab641ba0481480178a2e, type: 2}
 --- !u!4 &344072490
 Transform:
   m_ObjectHideFlags: 0
@@ -1810,7 +1818,7 @@ Animator:
   m_GameObject: {fileID: 419342280}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: b268ec0b1ea924549a715cc749ea7041, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1877,7 +1885,7 @@ SpriteRenderer:
   m_SortingLayerID: 787150233
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: -241658417, guid: c839ac769c94dc84d954b261687eb535, type: 3}
+  m_Sprite: {fileID: -1870239249, guid: 0f71b9d9daf9683428d6a457064391ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2678,6 +2686,7 @@ MonoBehaviour:
   animationScript: {fileID: 1773538591}
   moveScript: {fileID: 729134599}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 743aee000f7eab641ba0481480178a2e, type: 2}
 --- !u!4 &729134601
 Transform:
   m_ObjectHideFlags: 0
@@ -4702,6 +4711,7 @@ MonoBehaviour:
   animationScript: {fileID: 2027261521}
   moveScript: {fileID: 1030865658}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 743aee000f7eab641ba0481480178a2e, type: 2}
 --- !u!4 &1030865660
 Transform:
   m_ObjectHideFlags: 0
@@ -4929,6 +4939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (1)
@@ -5138,8 +5152,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0.00939998, z: 0}
-    m_Extent: {x: 0.8992, y: 0.51489997, z: 0}
+    m_Center: {x: 0.00044998527, y: 0.009149998, z: 0}
+    m_Extent: {x: 0.89954996, y: 0.51455, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5483,7 +5497,7 @@ Animator:
   m_GameObject: {fileID: 1372913208}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5569,6 +5583,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (3)
@@ -5638,13 +5656,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4174314123244738084, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f9d59543ea526274691253430df143c7, type: 2}
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6f36618d2dd474faa44eb1348fb392, type: 2}
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _defense
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _attackRange
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: movementSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _attackStrength
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6319327172176152271, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7416533949389949347, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.864914
+      value: -7.846
       objectReference: {fileID: 0}
     - target: {fileID: 7416533949389949347, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5682,6 +5728,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7876322686838413957, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 285332410, guid: a3acfc009850c63489904c58e36d1244, type: 3}
     - target: {fileID: 7876322686838413957, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_SortingOrder
       value: 7
@@ -5796,6 +5846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (6)
@@ -5899,7 +5953,7 @@ Animator:
   m_GameObject: {fileID: 1470208155}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6231,6 +6285,7 @@ MonoBehaviour:
   animationScript: {fileID: 235976367}
   moveScript: {fileID: 1524831408}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: d1ea179b673f3b948b185d35e8412c21, type: 2}
 --- !u!4 &1524831410
 Transform:
   m_ObjectHideFlags: 0
@@ -6356,7 +6411,7 @@ Animator:
   m_GameObject: {fileID: 1532751463}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6725,6 +6780,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (5)
@@ -6910,7 +6969,7 @@ Animator:
   m_GameObject: {fileID: 1689529010}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7153,6 +7212,7 @@ MonoBehaviour:
   animationScript: {fileID: 1470208156}
   moveScript: {fileID: 1699623418}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: 163aa310616014942aa46f0fe360edb8, type: 2}
 --- !u!4 &1699623420
 Transform:
   m_ObjectHideFlags: 0
@@ -7261,6 +7321,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 5769613846208520599, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: m_Name
       value: Zombie1 (4)
@@ -7364,7 +7428,7 @@ Animator:
   m_GameObject: {fileID: 1773538590}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7607,6 +7671,7 @@ MonoBehaviour:
   animationScript: {fileID: 947867613}
   moveScript: {fileID: 1779907745}
   movementSpeed: 150
+  stats: {fileID: 11400000, guid: d1ea179b673f3b948b185d35e8412c21, type: 2}
 --- !u!4 &1779907747
 Transform:
   m_ObjectHideFlags: 0
@@ -8375,7 +8440,7 @@ Animator:
   m_GameObject: {fileID: 2027261520}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8608,6 +8673,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 632921969426750844, guid: 53e6610cc8ab9f2429d8cc5ffceb9651, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}
     - target: {fileID: 2748590906137262985, guid: 53e6610cc8ab9f2429d8cc5ffceb9651, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8665,6 +8734,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1589789516}
     m_Modifications:
+    - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
     - target: {fileID: 4649143475314225477, guid: 76da134727164e34cb5251c20c99f4f6, type: 3}
       propertyPath: _target
       value: 

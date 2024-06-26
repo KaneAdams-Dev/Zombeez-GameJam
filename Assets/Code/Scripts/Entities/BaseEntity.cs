@@ -91,6 +91,11 @@ namespace ZombeezGameJam.Entities
             Destroy(gameObject);
         }
 
+        public virtual void OnFall()
+        {
+            Destroy(gameObject);
+        }
+
         #endregion Custom Methods
     }
 }

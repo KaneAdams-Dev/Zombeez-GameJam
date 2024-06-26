@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86ca41642170f248ab576ccd02e4f01, type: 3}
   m_Name: Character2
   m_EditorClassIdentifier: 
-  _maxHealth: 0
+  _maxHealth: 100
   _defense: 0
   _animatorController: {fileID: 9100000, guid: 8c166e7e18b59f043846922ec7f54811, type: 2}
