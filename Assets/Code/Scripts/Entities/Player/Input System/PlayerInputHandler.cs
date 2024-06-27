@@ -26,26 +26,14 @@ namespace ZombeezGameJam.Entities.Player
 
         private void OnEnable()
         {
-            _playerActionsMap.Enable();
-
-            _playerActionsMap.Movement.performed += OnMovementPerformed;
-            _playerActionsMap.Movement.canceled += OnMovementCanceled;
-
-            _playerActionsMap.Jump.performed += OnJumpPerformed;
-            _playerActionsMap.Fire.performed += OnFirePerformed;
-            _playerActionsMap.Interact.performed += OnInteractPerformed;
+            GameManager.OnGameOver += DisableInputs;
+            EnableInputs();
         }
 
         private void OnDisable()
         {
-            _playerActionsMap.Disable();
-
-            _playerActionsMap.Movement.performed -= OnMovementPerformed;
-            _playerActionsMap.Movement.canceled -= OnMovementCanceled;
-
-            _playerActionsMap.Jump.performed -= OnJumpPerformed;
-            _playerActionsMap.Fire.performed -= OnFirePerformed;
-            _playerActionsMap.Interact.performed -= OnInteractPerformed;
+            GameManager.OnGameOver -= DisableInputs;
+            DisableInputs();
         }
 
         #endregion Unity Methods
@@ -92,6 +80,30 @@ namespace ZombeezGameJam.Entities.Player
             bool isInValidState = invalidStates.Contains(_playerScript.currentState);
 
             return !(isUnarmed || isInValidState);
+        }
+
+        private void EnableInputs()
+        {
+            _playerActionsMap.Enable();
+
+            _playerActionsMap.Movement.performed += OnMovementPerformed;
+            _playerActionsMap.Movement.canceled += OnMovementCanceled;
+
+            _playerActionsMap.Jump.performed += OnJumpPerformed;
+            _playerActionsMap.Fire.performed += OnFirePerformed;
+            _playerActionsMap.Interact.performed += OnInteractPerformed;
+        }
+
+        private void DisableInputs()
+        {
+            _playerActionsMap.Disable();
+
+            _playerActionsMap.Movement.performed -= OnMovementPerformed;
+            _playerActionsMap.Movement.canceled -= OnMovementCanceled;
+
+            _playerActionsMap.Jump.performed -= OnJumpPerformed;
+            _playerActionsMap.Fire.performed -= OnFirePerformed;
+            _playerActionsMap.Interact.performed -= OnInteractPerformed;
         }
 
         #endregion Custom Methods

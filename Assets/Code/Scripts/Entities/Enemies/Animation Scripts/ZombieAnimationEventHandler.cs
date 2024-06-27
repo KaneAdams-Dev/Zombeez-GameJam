@@ -18,6 +18,22 @@ namespace ZombeezGameJam.Entities.Enemies
             _zombie.movementScript.StopMovingZombie();
         }
 
+        public void PlayMovementSound()
+        {
+            if (GetComponent<SpriteRenderer>().isVisible)
+            {
+                SoundFXManager.instance.PlayRandomSoundClip(_zombie.movementAudio, _zombie.transform, 1f);
+            }
+        }
+
+        public void PlayAttackSound()
+        {
+            if (GetComponent<SpriteRenderer>().isVisible)
+            {
+                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, 1f);
+            }
+        }
+
         #endregion Custom Methods
     }
 }

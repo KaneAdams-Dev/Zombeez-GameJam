@@ -25,14 +25,10 @@ namespace ZombeezGameJam.Entities.Player
 
         public void CheckForInteractions()
         {
-            Debug.Log("Looking for buttons to press!");
-
             RaycastHit2D hit = Physics2D.Raycast(origin: transform.position, direction: transform.right * transform.localScale.x, distance: _interactRange, _interactLayers.value);
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.transform.name);
-
                 if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
                 {
                     interactable.Interact();

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41f5c4d2dc7deae42b362ea112a6fd70
+guid: 9dfb4641d62241944953e3f421a413d7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,7 +81,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombie1_death-sheet_0
+      name: zombie3_attack01-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +144,20 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6a7d9296f975354697d5086bb40301a
-      internalID: -1950705120
+      spriteID: 18ad81f64b043dc40ac627409c7c04a1
+      internalID: 1233162440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie1_death-sheet_1
+      name: zombie3_attack01-sheet_1
       rect:
         serializedVersion: 2
         x: 128
@@ -139,20 +165,20 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e74337ff9cd4ff24fba89fc6add67e2a
-      internalID: 1023425014
+      spriteID: f14d591ed97db114fb2b209a155e6535
+      internalID: -1735502812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie1_death-sheet_2
+      name: zombie3_attack01-sheet_2
       rect:
         serializedVersion: 2
         x: 256
@@ -160,20 +186,20 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a106efa19a6549140b4e6b2200115b66
-      internalID: 1529172419
+      spriteID: 96f427f1590317a4bb99f17187f423fa
+      internalID: -1636056761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie1_death-sheet_3
+      name: zombie3_attack01-sheet_3
       rect:
         serializedVersion: 2
         x: 384
@@ -181,20 +207,20 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11ebdcd3a579f654398c2f70c9261efb
-      internalID: 1694657076
+      spriteID: 70fcfa88e88faa942aaaad982cbaa1ab
+      internalID: -667266155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie1_death-sheet_4
+      name: zombie3_attack01-sheet_4
       rect:
         serializedVersion: 2
         x: 512
@@ -202,20 +228,20 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7aabf83b7c228a3449371d8068ca8492
-      internalID: 930070334
+      spriteID: b81d33b3477c7e1448e5e850574f57e1
+      internalID: 841093002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie1_death-sheet_5
+      name: zombie3_attack01-sheet_5
       rect:
         serializedVersion: 2
         x: 640
@@ -223,56 +249,14 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a453dcadab00f14e8281d3efbb8dd22
-      internalID: -464102166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombie1_death-sheet_6
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc217f9b284a85348b4a49b25d517ca0
-      internalID: 1214049892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombie1_death-sheet_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd817a56aedb1b648af819a1c3e34afa
-      internalID: -1793252679
+      spriteID: 59f5fcb2bed8042458b20b1d580c1f9d
+      internalID: 361051854
       vertices: []
       indices: 
       edges: []
@@ -288,14 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      zombie1_death-sheet_0: -1950705120
-      zombie1_death-sheet_1: 1023425014
-      zombie1_death-sheet_2: 1529172419
-      zombie1_death-sheet_3: 1694657076
-      zombie1_death-sheet_4: 930070334
-      zombie1_death-sheet_5: -464102166
-      zombie1_death-sheet_6: 1214049892
-      zombie1_death-sheet_7: -1793252679
+      zombie3_attack01-sheet_0: 1233162440
+      zombie3_attack01-sheet_1: -1735502812
+      zombie3_attack01-sheet_2: -1636056761
+      zombie3_attack01-sheet_3: -667266155
+      zombie3_attack01-sheet_4: 841093002
+      zombie3_attack01-sheet_5: 361051854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

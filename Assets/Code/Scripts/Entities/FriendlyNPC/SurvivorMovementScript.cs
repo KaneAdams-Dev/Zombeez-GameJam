@@ -43,7 +43,6 @@ namespace ZombeezGameJam.Entities.Survivors
             {
                 MoveSurvivor();
             }
-
         }
 
         internal void MoveSurvivor()
@@ -53,14 +52,18 @@ namespace ZombeezGameJam.Entities.Survivors
 
             if (_survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint)
             {
-                //Vector3 desiredPosition = SetDesiredPosition();
-                Debug.Log(gameObject.name + " " + _desiredPosition);
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
                     _rbody.velocity = Vector2.zero;
                     transform.localScale = Vector3.one;
-                    _survivorScript.UpdateSurvivorStates(SurvivorStates.WaitingAtCheckpoint);
+
                     GameManager.instance.AddSurvivorToHorde(gameObject);
+
+                    _survivorScript.UpdateSurvivorStates(SurvivorStates.WaitingAtCheckpoint);
+                    if (GameManager.instance.IsFinalWave)
+                    {
+                        _survivorScript.RunToSafehouse();
+                    } 
 
                     return;
                 }
@@ -69,7 +72,6 @@ namespace ZombeezGameJam.Entities.Survivors
 
             } else if (_survivorScript.currentState == SurvivorStates.MoveToLevelFinish)
             {
-                Debug.Log(gameObject.name + " " + _desiredPosition);
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
                     GameManager.instance.RemoveSurvivorFromHorde(gameObject);
@@ -77,9 +79,8 @@ namespace ZombeezGameJam.Entities.Survivors
                 }
 
                 transform.localScale = new Vector3(IsFacingTarget(_desiredPosition), transform.localScale.y, transform.localScale.z);
-            }else if (_survivorScript.currentState == SurvivorStates.Flee)
+            } else if (_survivorScript.currentState == SurvivorStates.Flee)
             {
-                Debug.Log(gameObject.name + " " + _desiredPosition);
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
                     _rbody.velocity = Vector2.zero;

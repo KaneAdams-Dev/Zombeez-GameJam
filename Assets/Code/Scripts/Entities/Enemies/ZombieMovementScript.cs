@@ -30,7 +30,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 _rbody.constraints = RigidbodyConstraints2D.None;
             }
 
-            if (_zombieScipt._stats.name != "Zombie1" && (_zombieScipt.currentState == ZombieStates.Patrol || _zombieScipt.currentState == ZombieStates.Chase))
+            if ((!_zombieScipt.isShuffler) && (_zombieScipt.currentState == ZombieStates.Patrol || _zombieScipt.currentState == ZombieStates.Chase))
             {
                 MoveZombie();
             }

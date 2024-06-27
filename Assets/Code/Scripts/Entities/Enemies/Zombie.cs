@@ -8,6 +8,7 @@ namespace ZombeezGameJam.Entities.Enemies
         Patrol,
         Chase,
         Attack,
+        Attack2,
     }
 
     public class Zombie : BaseEntity
@@ -32,9 +33,15 @@ namespace ZombeezGameJam.Entities.Enemies
 
         [SerializeField] internal BaseEntityStats _stats;
 
+        [SerializeField] internal bool isShuffler;
+        [SerializeField] internal bool hasSecondAttack;
+
         internal ZombieStates currentState;
 
         private Collider2D[] _entityOverlaps;
+
+        [SerializeField] internal AudioClip[] movementAudio;
+        [SerializeField] internal AudioClip attackAudio;
 
         #region Unity Methods
 
@@ -141,6 +148,8 @@ namespace ZombeezGameJam.Entities.Enemies
                     Instantiate(_weaponDrop, transform.position, Quaternion.identity);
                 }
             }
+
+            GameManager.instance.CountdownZombies();
         }
 
         #endregion Custom Methods

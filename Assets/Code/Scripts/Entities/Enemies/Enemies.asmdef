@@ -2,7 +2,8 @@
     "name": "Enemies",
     "rootNamespace": "ZombeezGameJam.Entities.Enemies",
     "references": [
-        "GUID:b38b9821dfcbe024fac2c9f80ae1a471"
+        "GUID:b38b9821dfcbe024fac2c9f80ae1a471",
+        "GUID:f21985510449fc147aef3df85b6d43a1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

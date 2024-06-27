@@ -27,8 +27,17 @@ namespace ZombeezGameJam.Entities.Survivors
         public override void Start()
         {
             base.Start();
-
             //UpdateSurvivorStates(SurvivorStates.Wander);
+        }
+
+        private void OnEnable()
+        {
+            GameManager.OnFinalWaveBegins += RunToSafehouse;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnFinalWaveBegins -= RunToSafehouse;
         }
 
         private void Update()
@@ -107,6 +116,15 @@ namespace ZombeezGameJam.Entities.Survivors
                 UpdateSurvivorStates(SurvivorStates.Flee);
                 moveScript._desiredPosition = new Vector3(Random.Range(moveScript._boundaryStart.position.x, moveScript._boundaryEnd.position.x), transform.position.y, transform.position.z);
                 Debug.Log("RUN! " + moveScript._desiredPosition);
+            }
+        }
+
+        internal void RunToSafehouse()
+        {
+            if (currentState == SurvivorStates.WaitingAtCheckpoint)
+            {
+                moveScript._desiredPosition = moveScript._finishPosition.position;
+                UpdateSurvivorStates(SurvivorStates.MoveToLevelFinish);
             }
         }
     }
