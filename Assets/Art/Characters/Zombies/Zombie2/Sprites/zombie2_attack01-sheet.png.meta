@@ -142,7 +142,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 128
-        height: 70
+        height: 74
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: zombie2_attack01-sheet_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 0
         width: 128
-        height: 70
+        height: 74
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,7 +184,7 @@ TextureImporter:
         x: 256
         y: 0
         width: 128
-        height: 70
+        height: 74
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

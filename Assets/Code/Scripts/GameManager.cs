@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombeezGameJam.Interfaces;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam
 {
@@ -102,6 +104,13 @@ namespace ZombeezGameJam
                     Debug.Log("IT'S ALIIIVE!");
                     OnPlayerRespawned?.Invoke(newPlayer);
 
+                    IStatsApplicable survivorStats = survivor.GetComponent<IStatsApplicable>();
+
+                    IStatsApplicable playerStats = newPlayer.GetComponent<IStatsApplicable>();
+
+                    playerStats.SetCurrentStatSO(survivorStats.GetEntityStats());
+                    playerStats.SetInitialHealth(survivorStats.GetCurrentHealth());
+
                     RemoveSurvivorFromHorde(survivor);
                 }
             } else
@@ -121,7 +130,7 @@ namespace ZombeezGameJam
             _zombiesLeft--;
             OnZombieCountUpdate?.Invoke(_zombiesLeft);
 
-            if ( _zombiesLeft == 0)
+            if (_zombiesLeft == 0)
             {
                 _isFinalWave = true;
                 OnFinalWaveBegins?.Invoke();

@@ -11,7 +11,7 @@ namespace ZombeezGameJam.Entities.Enemies
         // Update is called once per frame
         private void Update()
         {
-            if (_zombieScript._target == null)
+            if (_zombieScript.target == null)
             {
                 _zombieScript.UpdateZombieState(ZombieStates.Patrol);
                 return;
@@ -26,13 +26,13 @@ namespace ZombeezGameJam.Entities.Enemies
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _zombieScript._attackRange);
+            Gizmos.DrawWireSphere(transform.position, _zombieScript.attackRange);
             
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, _zombieScript._chaseRange);
+            Gizmos.DrawWireSphere(transform.position, _zombieScript.chaseRange);
 
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position, _zombieScript._chaseRange + _zombieScript._chaseBuffer);
+            Gizmos.DrawWireSphere(transform.position, _zombieScript.chaseRange + _zombieScript.chaseBuffer);
         }
 
         #endregion Unity Methods
@@ -41,12 +41,12 @@ namespace ZombeezGameJam.Entities.Enemies
 
         private bool IsTargetInRange()
         {
-            return Vector3.Distance(transform.position, _zombieScript._target.position) <= _zombieScript._attackRange;
+            return Vector3.Distance(transform.position, _zombieScript.target.position) <= _zombieScript.attackRange;
         }
 
         internal void Attack()
         {
-            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript._target == null)
+            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript.target == null)
             {
                 return;
             }

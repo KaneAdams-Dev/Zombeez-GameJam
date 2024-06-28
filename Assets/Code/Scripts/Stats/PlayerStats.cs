@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ZombeezGameJam.Entities.Player
+namespace ZombeezGameJam.Stats
 {
     [CreateAssetMenu(fileName = "PlayerEntity", menuName = "Entity/PlayerEntity")]
     public class PlayerStats : BaseEntityStats

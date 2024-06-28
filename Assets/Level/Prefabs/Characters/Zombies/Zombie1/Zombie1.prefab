@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b40795baafcdce49aac2986751bcd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 47348bb3f2ba5744fa633971705b9aa7, type: 2}
   _renderer: {fileID: 7876322686838413957}
   _maxHealth: 100
   _defense: 0
@@ -60,14 +61,21 @@ MonoBehaviour:
   movementScript: {fileID: 9084702459429387336}
   hitboxScript: {fileID: 2281086907157854425}
   _weaponDrop: {fileID: 1979191887872998920, guid: 2730d66f7cc52194882143c4d3777d81, type: 3}
-  _target: {fileID: 0}
+  target: {fileID: 0}
   _targetLayers:
     serializedVersion: 2
     m_Bits: 1152
-  _attackRange: 0.2
-  _chaseRange: 1.3
-  _chaseBuffer: 1
-  movementSpeed: 20
+  patrolStartPosition: {fileID: 0}
+  patrolEndPosition: {fileID: 0}
+  attackRange: 0
+  chaseRange: 0
+  chaseBuffer: 0
+  isShuffler: 1
+  hasSecondAttack: 0
+  movementAudio:
+  - {fileID: 8300000, guid: cd7396ca466b54f47a33be391189471f, type: 3}
+  - {fileID: 8300000, guid: 8f38c3e052e904b43b3f808d641253a5, type: 3}
+  attackAudio: {fileID: 8300000, guid: bb3f5baa98f27824fa60fad1e7519c79, type: 3}
 --- !u!114 &5409927162261797511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f4eb27d68b358448e9ca9ba905fb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zombieScipt: {fileID: 4649143475314225477}
-  patrolStartPosition: {fileID: 0}
-  patrolEndPosition: {fileID: 0}
+  _zombie: {fileID: 4649143475314225477}
   _platformLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -283,7 +289,7 @@ SpriteRenderer:
   m_SortingLayerID: 1641497243
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1684628396, guid: 16ad7cf3a96347d43be92cc9f38dbf62, type: 3}
+  m_Sprite: {fileID: 1732551571, guid: 4aa2522aaabb87741acafe142452f14e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86ca41642170f248ab576ccd02e4f01, type: 3}
+  m_Script: {fileID: 11500000, guid: 60d2053163dbb534f89bf465126c78d3, type: 3}
   m_Name: Character3
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _defense: 0
+  corpsePrefab: {fileID: 0}
+  _movementSpeed: 100
   _animatorController: {fileID: 9100000, guid: 1c38652f05822b347a32d63be11b0d7e, type: 2}
+  jumpHeight: 150

@@ -1,5 +1,6 @@
 using UnityEngine;
 using ZombeezGameJam.Interfaces;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Survivors
 {
@@ -12,17 +13,15 @@ namespace ZombeezGameJam.Entities.Survivors
         MoveToLevelFinish,
     }
 
-    public class Survivor : BaseEntity, IInteractable
+    public class Survivor : BaseEntity, IInteractable, IStatsApplicable
     {
         [SerializeField] internal SurvivorAnimationScript animationScript;
         [SerializeField] internal SurvivorMovementScript moveScript;
 
         [Header("Movement Values")]
-        [SerializeField] internal float movementSpeed = 100f;
+        //[SerializeField] internal float movementSpeed = 100f;
 
         internal SurvivorStates currentState;
-
-        [SerializeField] internal BaseEntityStats stats;
 
         public override void Start()
         {
@@ -54,7 +53,7 @@ namespace ZombeezGameJam.Entities.Survivors
         public override void ApplyEntityStats()
         {
             base.ApplyEntityStats();
-            animationScript.animator.runtimeAnimatorController = stats.Controller;
+            animationScript.animator.runtimeAnimatorController = _stats.Controller;
         }
 
         public void UpdateSurvivorStates(SurvivorStates a_newState)
@@ -68,10 +67,10 @@ namespace ZombeezGameJam.Entities.Survivors
 
             if (currentState == SurvivorStates.MoveToLevelFinish)
             {
-                movementSpeed = 100;
+                MovementSpeed = 100;
             } else if (currentState == SurvivorStates.Flee || currentState == SurvivorStates.MoveToHordeCheckpoint)
             {
-                movementSpeed = 150;
+                MovementSpeed = 150;
             }
 
             animationScript.UpdateAnimationState();
@@ -126,6 +125,27 @@ namespace ZombeezGameJam.Entities.Survivors
                 moveScript._desiredPosition = moveScript._finishPosition.position;
                 UpdateSurvivorStates(SurvivorStates.MoveToLevelFinish);
             }
+        }
+
+        public void SetCurrentStatSO(BaseEntityStats a_newStats)
+        {
+            _stats = a_newStats;
+            ApplyEntityStats();
+        }
+
+        public BaseEntityStats GetEntityStats()
+        {
+            return _stats;
+        }
+
+        public int GetCurrentHealth()
+        {
+            return CurrentHealth;
+        }
+
+        public void SetInitialHealth(int a_startHealth)
+        {
+            CurrentHealth = a_startHealth;
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Enemies
 {
@@ -21,18 +22,25 @@ namespace ZombeezGameJam.Entities.Enemies
 
         [SerializeField] private GameObject _weaponDrop;
 
-        [SerializeField] internal Transform _target;
+        [SerializeField] internal Transform target;
         [SerializeField] private LayerMask _targetLayers;
-        internal GameObject _player;
+        internal GameObject player;
 
-        [SerializeField] internal float _attackRange;
-        [SerializeField] internal float _chaseRange;
-        [SerializeField] internal float _chaseBuffer;
+        [SerializeField] internal Transform patrolStartPosition;
+        [SerializeField] internal Transform patrolEndPosition;
 
-        [SerializeField] internal float movementSpeed = 100f;
+        [SerializeField] internal float attackRange;
+        [SerializeField] internal float chaseRange;
+        [SerializeField] internal float chaseBuffer;
 
-        [SerializeField] internal BaseEntityStats _stats;
+        //[SerializeField] internal float movementSpeed = 100f;
 
+        public BaseEntityStats Stats
+        {
+            get => _stats;
+            set => _stats = value;
+        }
+        
         [SerializeField] internal bool isShuffler;
         [SerializeField] internal bool hasSecondAttack;
 
@@ -45,11 +53,35 @@ namespace ZombeezGameJam.Entities.Enemies
 
         #region Unity Methods
 
+        private void Awake()
+        {
+            currentState = ZombieStates.Idle;
+            UpdateZombieState(ZombieStates.Idle);
+        }
+
         public override void Start()
         {
             base.Start();
+        }
 
-            UpdateZombieState(ZombieStates.Patrol);
+        public override void ApplyEntityStats()
+        {
+            base.ApplyEntityStats();
+
+            animationScript._animator.runtimeAnimatorController = _stats.Controller;
+
+            if (_stats is ZombieStats zombieStats)
+            {
+                chaseRange = zombieStats.ChaseRange;
+                chaseBuffer = zombieStats.ChaseBuffer;
+                attackRange = zombieStats.AttackRange;
+
+                isShuffler = zombieStats.IsShuffler;
+                hasSecondAttack = zombieStats.HasSecondAttack;
+
+                movementAudio = zombieStats.MovementAudio;
+                attackAudio = zombieStats.AttackAudio;
+            }
         }
 
         private void Update()
@@ -59,7 +91,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 return;
             }
 
-            _entityOverlaps = Physics2D.OverlapCircleAll(transform.position, _chaseRange + _chaseBuffer, _targetLayers.value);
+            _entityOverlaps = Physics2D.OverlapCircleAll(transform.position, chaseRange + chaseBuffer, _targetLayers.value);
 
             if (_entityOverlaps.Length == 0)
             {
@@ -67,14 +99,14 @@ namespace ZombeezGameJam.Entities.Enemies
                 return;
             }
 
-            _player = FindClosestTarget(_entityOverlaps);
+            player = FindClosestTarget(_entityOverlaps);
 
-            float distanceToEntity = Vector3.Distance(_player.transform.position, transform.position);
-            if (distanceToEntity < _chaseRange)
+            float distanceToEntity = Vector3.Distance(player.transform.position, transform.position);
+            if (distanceToEntity < chaseRange)
             {
-                _target = _player.transform;
+                target = player.transform;
 
-                if (distanceToEntity < _attackRange)
+                if (distanceToEntity < attackRange)
                 {
                     combatScript.Attack();
                 } else
@@ -83,7 +115,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 }
             } else
             {
-                UpdateZombieState(distanceToEntity > (_chaseRange + _chaseBuffer) ? ZombieStates.Patrol : ZombieStates.Chase);
+                UpdateZombieState(distanceToEntity > (chaseRange + chaseBuffer) ? ZombieStates.Patrol : ZombieStates.Chase);
 
             }
             //if (distanceToEntity < (_chaseRange + _chaseBuffer))
@@ -133,7 +165,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
         internal float IsFacingTarget()
         {
-            float direction = _target.position.x - transform.position.x;
+            float direction = target.position.x - transform.position.x;
             return direction / Mathf.Abs(direction);
         }
 

@@ -1,9 +1,12 @@
 using UnityEngine;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities
 {
     public class BaseEntity : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] protected internal BaseEntityStats _stats;
         [SerializeField] private SpriteRenderer _renderer;
 
         [Header("Health System")]
@@ -17,13 +20,33 @@ namespace ZombeezGameJam.Entities
 
         [Space(5)]
         [SerializeField] private GameObject _corpsePrefab;
-        
+
         private int _currentHealth;
+
+        private float movementSpeed;
+
+        public float MovementSpeed
+        {
+            get => movementSpeed;
+            set => movementSpeed = value;
+        }
+
+        public int CurrentHealth
+        {
+            get => _currentHealth;
+            set => _currentHealth = value;
+        }
+
+        public int MaxHealth
+        {
+            get => _maxHealth;
+            set => _maxHealth = value;
+        }
 
         #region Unity Methods
 
         // Start is called before the first frame update
-        public  virtual void Start()
+        public virtual void Start()
         {
             ApplyEntityStats();
             _currentHealth = _maxHealth;
@@ -36,7 +59,11 @@ namespace ZombeezGameJam.Entities
 
         public virtual void ApplyEntityStats()
         {
+            _maxHealth = _stats.MaxHealth;
+            _defense = _stats.Defense;
+            _corpsePrefab = _stats.CorpsePrefab;
 
+            movementSpeed = _stats.MovementSpeed;
         }
 
         public virtual void TakeDamage(int a_damageAmount)
@@ -51,7 +78,7 @@ namespace ZombeezGameJam.Entities
             }
 
             _currentHealth -= a_damageAmount;
-            OnHealthChange();
+            UpdateHealth();
 
             if (_currentHealth <= 0)
             {
@@ -67,10 +94,10 @@ namespace ZombeezGameJam.Entities
                 _currentHealth = _maxHealth;
             }
 
-            OnHealthChange();
+            UpdateHealth();
         }
 
-        private void OnHealthChange()
+        public virtual void UpdateHealth()
         {
             Debug.Log("New Health: " + _currentHealth);
         }

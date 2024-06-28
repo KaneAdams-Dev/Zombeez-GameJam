@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using ZombeezGameJam.Entities.Player;
 
 namespace ZombeezGameJam.UI
 {
@@ -10,6 +12,8 @@ namespace ZombeezGameJam.UI
         [SerializeField] private TextMeshProUGUI _countdownTimerText;
         [SerializeField] private TextMeshProUGUI _zombieCounterText;
         [SerializeField] private TextMeshProUGUI _survivorCounterText;
+
+        [SerializeField] private Image _healthbarFill;
 
         #region Unity Methods
 
@@ -36,6 +40,8 @@ namespace ZombeezGameJam.UI
             GameManager.OnSurvivorCountUpdate += UpdateSurvivorCounterDisplay;
             GameManager.OnFinalWaveBegins += EnableFinalWaveUI;
             GameManager.OnCountdownUpdate += UpdateCountdownDisplay;
+
+            Player.OnHealthChange += UpdateHealthbar;
         }
 
         private void OnDisable()
@@ -44,6 +50,8 @@ namespace ZombeezGameJam.UI
             GameManager.OnSurvivorCountUpdate -= UpdateSurvivorCounterDisplay;
             GameManager.OnFinalWaveBegins -= EnableFinalWaveUI;
             GameManager.OnCountdownUpdate -= UpdateCountdownDisplay;
+
+            Player.OnHealthChange -= UpdateHealthbar;
         }
 
         // Update is called once per frame
@@ -81,6 +89,11 @@ namespace ZombeezGameJam.UI
         private void UpdateCountdownDisplay(int a_countdownTime)
         {
             _countdownTimerText.text = a_countdownTime > 0 ? a_countdownTime.ToString() : "GAME OVER!";
+        }
+
+        private void UpdateHealthbar(int a_currentHealth, int a_maxHealth)
+        {
+            _healthbarFill.fillAmount = (float)a_currentHealth / a_maxHealth;
         }
 
         #endregion Custom Methods

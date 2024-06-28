@@ -47,7 +47,7 @@ namespace ZombeezGameJam.Entities.Survivors
 
         internal void MoveSurvivor()
         {
-            float xVelocity = _survivorScript.movementSpeed * Time.fixedDeltaTime * transform.localScale.x;
+            float xVelocity = _survivorScript.MovementSpeed * Time.fixedDeltaTime * transform.localScale.x;
             _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
 
             if (_survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint)

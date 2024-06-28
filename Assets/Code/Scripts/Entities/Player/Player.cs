@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+using ZombeezGameJam.Interfaces;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Player
 {
@@ -25,7 +28,7 @@ namespace ZombeezGameJam.Entities.Player
         M60,
     }
 
-    public class Player : BaseEntity
+    public class Player : BaseEntity, IStatsApplicable
     {
         [Header("Script References")]
         [SerializeField] internal PlayerInputHandler inputScript;
@@ -33,14 +36,15 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] internal PlayerAnimationScript animationScript;
         [SerializeField] internal PlayerInteractorScript interactor;
         [SerializeField] internal WeaponScript weaponScript;
-        [SerializeField] internal BaseEntityStats stats;
 
         [Header("Movement Values")]
-        [SerializeField] internal float movementSpeed = 100f;
+        //[SerializeField] internal float movementSpeed = 100f;
         [SerializeField] internal float jumpHeight = 10f;
 
         internal PlayerStates currentState;
         public PlayerWeapons currentWeapon;
+
+        public static event Action<int, int> OnHealthChange;
 
         #region Unity Methods
 
@@ -59,14 +63,13 @@ namespace ZombeezGameJam.Entities.Player
         public override void ApplyEntityStats()
         {
             base.ApplyEntityStats();
+            
+            animationScript._animator.runtimeAnimatorController = _stats.Controller;
 
-            if (stats is PlayerStats playerStats)
+            if (_stats is PlayerStats playerStats)
             {
                 jumpHeight = playerStats.JumpHeight;
             }
-
-            animationScript._animator.runtimeAnimatorController = stats.Controller;
-
         }
 
         internal void UpdatePlayerState(PlayerStates a_newState)
@@ -91,6 +94,12 @@ namespace ZombeezGameJam.Entities.Player
             animationScript.UpdateAnimationState();
         }
 
+        public override void UpdateHealth()
+        {
+            base.UpdateHealth();
+            OnHealthChange?.Invoke(CurrentHealth, MaxHealth);
+        }
+
         public override void OnDeath()
         {
             base.OnDeath();
@@ -101,6 +110,28 @@ namespace ZombeezGameJam.Entities.Player
         {
             base.OnFall();
             GameManager.instance.RespawnPlayer();
+        }
+
+        public void SetCurrentStatSO(BaseEntityStats a_newStats)
+        {
+            _stats = a_newStats;
+            ApplyEntityStats();
+        }
+
+        public BaseEntityStats GetEntityStats()
+        {
+            return _stats;
+        }
+
+        public int GetCurrentHealth()
+        {
+            return CurrentHealth;
+        }
+
+        public void SetInitialHealth(int a_startHealth)
+        {
+            CurrentHealth = a_startHealth;
+            OnHealthChange?.Invoke(CurrentHealth, MaxHealth);
         }
 
         #endregion Custom Methods

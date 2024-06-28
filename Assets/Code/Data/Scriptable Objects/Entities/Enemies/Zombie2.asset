@@ -9,9 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86ca41642170f248ab576ccd02e4f01, type: 3}
+  m_Script: {fileID: 11500000, guid: 27e31c608c2c5764a8c5284fd9b67ffb, type: 3}
   m_Name: Zombie2
   m_EditorClassIdentifier: 
-  _maxHealth: 0
+  _maxHealth: 100
   _defense: 5
+  corpsePrefab: {fileID: 7710702260405054554, guid: a4e7a23df26d38b48b7d415fdfe48f71, type: 3}
+  _movementSpeed: 25
   _animatorController: {fileID: 9100000, guid: f9d59543ea526274691253430df143c7, type: 2}
+  _chaseRange: 1.25
+  _chaseBuffer: 1
+  _attackRange: 0.34
+  _isShuffler: 0
+  _hasSecondAttack: 0
+  _movementAudio: []
+  _attackAudio: {fileID: 0}

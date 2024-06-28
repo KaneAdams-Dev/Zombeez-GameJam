@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e31c608c2c5764a8c5284fd9b67ffb, type: 3}
+  m_Name: Zombie3
+  m_EditorClassIdentifier: 
+  _maxHealth: 125
+  _defense: 2
+  corpsePrefab: {fileID: 7710702260405054554, guid: 2b80f2752ae672a499205648ade0c089, type: 3}
+  _movementSpeed: 25
+  _animatorController: {fileID: 9100000, guid: fb5b28a87dbd41d409addbe7eb5d9420, type: 2}
+  _chaseRange: 2
+  _chaseBuffer: 0.5
+  _attackRange: 0.29
+  _isShuffler: 1
+  _hasSecondAttack: 0
+  _movementAudio: []
+  _attackAudio: {fileID: 8300000, guid: 00972ebdb8b388b49bd1189db335ff0f, type: 3}

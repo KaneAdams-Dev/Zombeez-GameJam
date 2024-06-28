@@ -4,10 +4,8 @@ namespace ZombeezGameJam.Entities.Enemies
 {
     public class ZombieMovementScript : MonoBehaviour
     {
-        [SerializeField] private Zombie _zombieScipt;
+        [SerializeField] private Zombie _zombie;
 
-        [SerializeField] private Transform patrolStartPosition;
-        [SerializeField] private Transform patrolEndPosition;
 
         private Rigidbody2D _rbody;
 
@@ -30,7 +28,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 _rbody.constraints = RigidbodyConstraints2D.None;
             }
 
-            if ((!_zombieScipt.isShuffler) && (_zombieScipt.currentState == ZombieStates.Patrol || _zombieScipt.currentState == ZombieStates.Chase))
+            if ((!_zombie.isShuffler) && (_zombie.currentState == ZombieStates.Patrol || _zombie.currentState == ZombieStates.Chase))
             {
                 MoveZombie();
             }
@@ -39,7 +37,7 @@ namespace ZombeezGameJam.Entities.Enemies
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(patrolStartPosition.position, patrolEndPosition.position);
+            Gizmos.DrawLine(_zombie.patrolStartPosition.position, _zombie.patrolEndPosition.position);
         }
 
         #endregion Unity Methods
@@ -48,26 +46,26 @@ namespace ZombeezGameJam.Entities.Enemies
 
         public void StartRoam()
         {
-            _zombieScipt._target = (Random.value > 0.5) ? patrolStartPosition : patrolEndPosition;
+            _zombie.target = (Random.value > 0.5) ? _zombie.patrolStartPosition : _zombie.patrolEndPosition;
         }
 
         internal void MoveZombie()
         {
-            transform.localScale = new Vector2(_zombieScipt.IsFacingTarget(), transform.localScale.y);
+            transform.localScale = new Vector2(_zombie.IsFacingTarget(), transform.localScale.y);
 
-            float xVelocity = _zombieScipt.movementSpeed * Time.fixedDeltaTime * transform.localScale.x;
+            float xVelocity = _zombie.MovementSpeed * Time.fixedDeltaTime * transform.localScale.x;
             _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
 
-            if (_zombieScipt.currentState == ZombieStates.Patrol)
+            if (_zombie.currentState == ZombieStates.Patrol)
             {
-                if (Vector3.Distance(_zombieScipt._target.position, transform.position) < 0.3f)
+                if (Vector3.Distance(_zombie.target.position, transform.position) < 0.3f)
                 {
-                    if (_zombieScipt._target == patrolStartPosition)
+                    if (_zombie.target == _zombie.patrolStartPosition)
                     {
-                        _zombieScipt._target = patrolEndPosition;
-                    }else if (_zombieScipt._target == patrolEndPosition)
+                        _zombie.target = _zombie.patrolEndPosition;
+                    } else if (_zombie.target == _zombie.patrolEndPosition)
                     {
-                        _zombieScipt._target = patrolStartPosition;
+                        _zombie.target = _zombie.patrolStartPosition;
                     }
                 }
             }

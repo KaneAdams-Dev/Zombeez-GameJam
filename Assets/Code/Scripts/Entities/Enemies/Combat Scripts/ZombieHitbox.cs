@@ -23,7 +23,7 @@ namespace ZombeezGameJam.Entities.Enemies
                 return;
             }
 
-            if (collision.gameObject.TryGetComponent(out BaseEntity entity) && /*collision.gameObject.CompareTag("Player")*/collision.transform == _zombieScript._target)
+            if (collision.gameObject.TryGetComponent(out BaseEntity entity) && /*collision.gameObject.CompareTag("Player")*/collision.transform == _zombieScript.target)
             {
                 isPlayerHit = true;
                 entity.TakeDamage(_zombieScript.AttackStength);

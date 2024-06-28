@@ -1,7 +1,9 @@
 {
     "name": "Entities",
     "rootNamespace": "ZombeezGameJam.Entities",
-    "references": [],
+    "references": [
+        "GUID:166cb70fc34cf1a4d8f417f770c6a696"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

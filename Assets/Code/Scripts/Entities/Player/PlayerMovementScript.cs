@@ -54,7 +54,7 @@ namespace ZombeezGameJam.Entities.Player
         {
             transform.localScale = _playerScript.inputScript.isFacingLeft ? new Vector2(-1, transform.localScale.y) : new Vector2(1, transform.localScale.y);
 
-            float xVelocity = _playerScript.inputScript.xMoveInput * _playerScript.movementSpeed * Time.fixedDeltaTime;
+            float xVelocity = _playerScript.inputScript.xMoveInput * _playerScript.MovementSpeed * Time.fixedDeltaTime;
             _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
         }
 
