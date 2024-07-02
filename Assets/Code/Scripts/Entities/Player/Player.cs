@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ZombeezGameJam.Interfaces;
+using ZombeezGameJam.Managers;
 using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Player
@@ -14,19 +15,7 @@ namespace ZombeezGameJam.Entities.Player
         Midair,
     }
 
-    public enum PlayerWeapons
-    {
-        Unarmed,
-        PolicePistol,
-        Glock,
-        Magnum,
-        SawnOff,
-        PumpAction,
-        AssualtShotgun,
-        Uzi,
-        AK47,
-        M60,
-    }
+    
 
     public class Player : BaseEntity, IStatsApplicable
     {
@@ -35,14 +24,17 @@ namespace ZombeezGameJam.Entities.Player
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerAnimationScript animationScript;
         [SerializeField] internal PlayerInteractorScript interactor;
-        [SerializeField] internal WeaponScript weaponScript;
+        [SerializeField] internal WeaponHandler weaponHandler;
+
+        [Space(5)]
+        [SerializeField] private GameObject _playerCorpsePrefab;
 
         [Header("Movement Values")]
         //[SerializeField] internal float movementSpeed = 100f;
         [SerializeField] internal float jumpHeight = 10f;
 
         internal PlayerStates currentState;
-        public PlayerWeapons currentWeapon;
+        public WeaponTypes currentWeapon;
 
         public static event Action<int, int> OnHealthChange;
 
@@ -69,6 +61,7 @@ namespace ZombeezGameJam.Entities.Player
             if (_stats is PlayerStats playerStats)
             {
                 jumpHeight = playerStats.JumpHeight;
+                _playerCorpsePrefab = playerStats.CorpsePrefab;
             }
         }
 
@@ -88,12 +81,6 @@ namespace ZombeezGameJam.Entities.Player
             animationScript.UpdateAnimationState();
         }
 
-        public void EquipWeapon(PlayerWeapons a_newWeapon)
-        {
-            currentWeapon = a_newWeapon;
-            animationScript.UpdateAnimationState();
-        }
-
         public override void UpdateHealth()
         {
             base.UpdateHealth();
@@ -102,14 +89,20 @@ namespace ZombeezGameJam.Entities.Player
 
         public override void OnDeath()
         {
-            base.OnDeath();
-            GameManager.instance.RespawnPlayer();
+            if (_playerCorpsePrefab != null)
+            {
+                GameObject corpse = Instantiate(_playerCorpsePrefab, transform.position, Quaternion.identity);
+                corpse.transform.localScale = transform.localScale;
+                corpse.GetComponentInChildren<PlayerAnimationEventHandler>()._isPlayer = true;
+            }
+
+            Destroy(gameObject);
+
         }
 
         public override void OnFall()
         {
             base.OnFall();
-            GameManager.instance.RespawnPlayer();
         }
 
         public void SetCurrentStatSO(BaseEntityStats a_newStats)
@@ -132,6 +125,14 @@ namespace ZombeezGameJam.Entities.Player
         {
             CurrentHealth = a_startHealth;
             OnHealthChange?.Invoke(CurrentHealth, MaxHealth);
+        }
+
+        public void PickUpWeapon(WeaponStats a_newWeapon)
+        {
+            currentWeapon = a_newWeapon.WeaponType;
+            animationScript.UpdateAnimationState();
+
+            weaponHandler.EquipWeapon(a_newWeapon);
         }
 
         #endregion Custom Methods

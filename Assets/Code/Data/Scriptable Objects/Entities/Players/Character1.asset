@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character1
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _defense: 0
+  _defense: 5
   corpsePrefab: {fileID: 7710702260405054554, guid: b9347e889bac0cd4db1e160d11d4364d, type: 3}
   _movementSpeed: 100
   _animatorController: {fileID: 9100000, guid: 14e0ef65e356eeb40aee7e16c5e897a7, type: 2}

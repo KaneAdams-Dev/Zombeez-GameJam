@@ -1,7 +1,9 @@
 {
     "name": "Stats",
     "rootNamespace": "ZombeezGameJam.Stats",
-    "references": [],
+    "references": [
+        "GUID:f21985510449fc147aef3df85b6d43a1"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

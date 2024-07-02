@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aa9ccbef0701ed34785289ea651d3003
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _pickupSprite: {fileID: 21300000, guid: 01d7b66f1515d0e47988b6c30930a4cb, type: 3}
+  - _MuzzleFlash: {fileID: 6078580734891761271, guid: 2ed7067ec18ae594ba706bd6fc5126ad, type: 3}
+  - _bulletPrefab: {fileID: 5386356990219011317, guid: e3e07bc94f99ff84e81d714fa8357d21, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

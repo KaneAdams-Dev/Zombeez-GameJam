@@ -1,5 +1,6 @@
 using UnityEngine;
 using ZombeezGameJam.Interfaces;
+using ZombeezGameJam.Managers;
 using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Survivors
@@ -78,16 +79,16 @@ namespace ZombeezGameJam.Entities.Survivors
 
         public void Interact()
         {
-            if (currentState != SurvivorStates.WaitingAtCheckpoint)
+            if (currentState == SurvivorStates.Idle || currentState == SurvivorStates.Flee)
             {
                 moveScript.SetDesiredPosition();
                 UpdateSurvivorStates(SurvivorStates.MoveToHordeCheckpoint);
-                Debug.Log("It shall be done!");
+                //Debug.Log("It shall be done!");
 
                 //Invoke(nameof(TeleportToCheckpoint), 2f);
             } else
             {
-                Debug.Log("But... I'm already here!");
+                //Debug.Log("But... I'm already here!");
             }
             //throw new System.NotImplementedException();
         }
@@ -114,7 +115,6 @@ namespace ZombeezGameJam.Entities.Survivors
             {
                 UpdateSurvivorStates(SurvivorStates.Flee);
                 moveScript._desiredPosition = new Vector3(Random.Range(moveScript._boundaryStart.position.x, moveScript._boundaryEnd.position.x), transform.position.y, transform.position.z);
-                Debug.Log("RUN! " + moveScript._desiredPosition);
             }
         }
 
@@ -146,6 +146,11 @@ namespace ZombeezGameJam.Entities.Survivors
         public void SetInitialHealth(int a_startHealth)
         {
             CurrentHealth = a_startHealth;
+        }
+
+        public void PickUpWeapon(WeaponStats a_newWeapon)
+        {
+            return;
         }
     }
 }

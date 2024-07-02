@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombeezGameJam.Managers;
 
 namespace ZombeezGameJam.Entities.Survivors
 {
@@ -75,6 +76,7 @@ namespace ZombeezGameJam.Entities.Survivors
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
                     GameManager.instance.RemoveSurvivorFromHorde(gameObject);
+                    GameManager.instance.UpdateSurvivorsToSave();
                     Destroy(gameObject);
                 }
 

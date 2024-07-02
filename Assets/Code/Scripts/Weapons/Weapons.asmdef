@@ -3,7 +3,9 @@
     "rootNamespace": "ZombeezGameJam.Weapons",
     "references": [
         "GUID:b38b9821dfcbe024fac2c9f80ae1a471",
-        "GUID:c3ef8393666eeab4cba8c66adf69f3d0"
+        "GUID:c3ef8393666eeab4cba8c66adf69f3d0",
+        "GUID:f21985510449fc147aef3df85b6d43a1",
+        "GUID:166cb70fc34cf1a4d8f417f770c6a696"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

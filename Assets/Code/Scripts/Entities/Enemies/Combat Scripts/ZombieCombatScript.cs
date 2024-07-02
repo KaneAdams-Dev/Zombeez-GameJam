@@ -11,6 +11,9 @@ namespace ZombeezGameJam.Entities.Enemies
         // Update is called once per frame
         private void Update()
         {
+            if (_zombieScript.currentState == ZombieStates.Spawn) { 
+                return;
+            }
             if (_zombieScript.target == null)
             {
                 _zombieScript.UpdateZombieState(ZombieStates.Patrol);
@@ -27,6 +30,9 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _zombieScript.attackRange);
+            
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, _zombieScript.secondaryAttackRange);
             
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _zombieScript.chaseRange);
@@ -46,7 +52,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
         internal void Attack()
         {
-            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript.target == null)
+            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript.currentState == ZombieStates.Attack2 || _zombieScript.currentState == ZombieStates.Spawn || _zombieScript.target == null)
             {
                 return;
             }
@@ -56,10 +62,31 @@ namespace ZombeezGameJam.Entities.Enemies
             Invoke(nameof(ResetAttack), _zombieScript.animationScript._animator.GetCurrentAnimatorClipInfo(0).Length);
         }
 
+        internal void SecondaryAttack()
+        {
+            if (_zombieScript.currentState == ZombieStates.Attack || _zombieScript.currentState == ZombieStates.Attack2 || _zombieScript.target == null)
+            {
+                return;
+            }
+
+            _zombieScript.isSecondaryAttackReady = false;
+
+            transform.localScale = new Vector2(_zombieScript.IsFacingTarget(), transform.localScale.y);
+
+            _zombieScript.UpdateZombieState(ZombieStates.Attack2);
+            Invoke(nameof(ResetAttack), _zombieScript.animationScript._animator.GetCurrentAnimatorClipInfo(0).Length);
+            Invoke(nameof(ResetSecondaryAttack), _zombieScript.animationScript._animator.GetCurrentAnimatorClipInfo(0).Length + 3f);
+        }
+
         private void ResetAttack()
         {
             _zombieScript.UpdateZombieState(ZombieStates.Idle);
             _zombieScript.hitboxScript.isPlayerHit = false;
+        }
+
+        private void ResetSecondaryAttack()
+        {
+            _zombieScript.isSecondaryAttackReady = true;
         }
 
         #endregion Custom Methods

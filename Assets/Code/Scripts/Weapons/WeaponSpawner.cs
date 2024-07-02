@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Weapons
 {
     public class WeaponSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _gunToSpawn;
+        [SerializeField] private GameObject _weaponPrefab;
+        [SerializeField] private WeaponStats _stats;
 
-        private GameObject _spawnedItem;
+        private WeaponPickup _spawnedWeapon;
 
         #region Unity Methods
 
@@ -24,7 +26,8 @@ namespace ZombeezGameJam.Weapons
 
         private void SpawnGun()
         {
-            _spawnedItem = Instantiate(_gunToSpawn, transform.position, Quaternion.identity);
+            _spawnedWeapon = Instantiate(_weaponPrefab, transform.position, Quaternion.identity).GetComponent<WeaponPickup>();
+            _spawnedWeapon.DroppedWeapon = _stats;
         }
 
         #endregion Custom Methods
@@ -35,9 +38,9 @@ namespace ZombeezGameJam.Weapons
         {
             while (true)
             {
-                if (_spawnedItem == null)
+                if (_spawnedWeapon == null)
                 {
-                    yield return new WaitForSeconds(30);
+                    yield return new WaitForSeconds(10);
 
                     SpawnGun();
                 }

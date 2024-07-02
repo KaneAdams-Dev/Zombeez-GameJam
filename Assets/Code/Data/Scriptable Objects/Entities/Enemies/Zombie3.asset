@@ -20,7 +20,9 @@ MonoBehaviour:
   _chaseRange: 2
   _chaseBuffer: 0.5
   _attackRange: 0.29
+  _attackStrength: 20
   _isShuffler: 1
   _hasSecondAttack: 0
+  _secondaryAttackRange: 0
   _movementAudio: []
   _attackAudio: {fileID: 8300000, guid: 00972ebdb8b388b49bd1189db335ff0f, type: 3}

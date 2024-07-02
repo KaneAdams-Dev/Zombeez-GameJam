@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombeezGameJam.Managers;
 
 namespace ZombeezGameJam.Camera
 {

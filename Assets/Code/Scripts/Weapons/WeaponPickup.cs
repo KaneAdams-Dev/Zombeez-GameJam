@@ -1,21 +1,37 @@
 using UnityEngine;
 using ZombeezGameJam.Entities.Player;
+using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Weapons
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class WeaponPickup : MonoBehaviour
     {
-        [SerializeField] private PlayerWeapons _droppedWeapon;
+        [SerializeField] private WeaponStats _droppedWeapon;
+        public WeaponStats DroppedWeapon
+        {
+            get => _droppedWeapon;
+            set => _droppedWeapon = value;
+        }
 
         [SerializeField] private float _minY;
         [SerializeField] private float _maxY;
 
         [SerializeField] private float _bopSpeed;
 
+        private SpriteRenderer _spriteRenderer;
+
         #region Unity Methods
+
+        private void Awake()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         private void Start()
         {
+            _spriteRenderer.sprite = _droppedWeapon.PickupSprite;
+
             _minY = transform.localPosition.y - 0.05f;
             _maxY = transform.localPosition.y + 0.05f;
 
@@ -37,22 +53,11 @@ namespace ZombeezGameJam.Weapons
         {
             if (collision.TryGetComponent(out Player player))
             {
-                player.EquipWeapon(_droppedWeapon);
-                //Player
+                collision.gameObject.GetComponent<Player>().PickUpWeapon(_droppedWeapon);
+
                 Destroy(gameObject);
             }
         }
-
-        //public void Interact()
-        //{
-        //    //Player player = FindObjectOfType<Player>();
-        //    //player.currentWeapon = _droppedWeapon;
-        //    //
-        //    ////a_player.currentWeapon = _droppedWeapon;
-        //    ///
-        //    FindObjectOfType<Player>().EquipWeapon(_droppedWeapon);
-        //    Destroy(gameObject);
-        //}
 
         #endregion Unity Methods
     }

@@ -1,10 +1,13 @@
 using UnityEngine;
+using ZombeezGameJam.Managers;
 using ZombeezGameJam.Stats;
+using ZombeezGameJam.Weapons;
 
 namespace ZombeezGameJam.Entities.Enemies
 {
     public enum ZombieStates
     {
+        Spawn,
         Idle,
         Patrol,
         Chase,
@@ -20,7 +23,8 @@ namespace ZombeezGameJam.Entities.Enemies
         [SerializeField] internal ZombieMovementScript movementScript;
         [SerializeField] internal ZombieHitbox hitboxScript;
 
-        [SerializeField] private GameObject _weaponDrop;
+        [SerializeField] private WeaponStats[] _weaponStats;
+        [SerializeField] private WeaponPickup _weaponPickup;
 
         [SerializeField] internal Transform target;
         [SerializeField] private LayerMask _targetLayers;
@@ -33,16 +37,20 @@ namespace ZombeezGameJam.Entities.Enemies
         [SerializeField] internal float chaseRange;
         [SerializeField] internal float chaseBuffer;
 
-        //[SerializeField] internal float movementSpeed = 100f;
+        [SerializeField] internal int attackStrength = 5;
 
         public BaseEntityStats Stats
         {
             get => _stats;
             set => _stats = value;
         }
-        
+
         [SerializeField] internal bool isShuffler;
         [SerializeField] internal bool hasSecondAttack;
+
+        [SerializeField] internal float secondaryAttackRange;
+
+        internal bool isSecondaryAttackReady;
 
         internal ZombieStates currentState;
 
@@ -50,18 +58,17 @@ namespace ZombeezGameJam.Entities.Enemies
 
         [SerializeField] internal AudioClip[] movementAudio;
         [SerializeField] internal AudioClip attackAudio;
+        [SerializeField] internal AudioClip deathAudio;
 
         #region Unity Methods
-
-        private void Awake()
-        {
-            currentState = ZombieStates.Idle;
-            UpdateZombieState(ZombieStates.Idle);
-        }
 
         public override void Start()
         {
             base.Start();
+            isSecondaryAttackReady = true;
+            
+            currentState = ZombieStates.Spawn;
+            UpdateZombieState(ZombieStates.Spawn);
         }
 
         public override void ApplyEntityStats()
@@ -76,17 +83,21 @@ namespace ZombeezGameJam.Entities.Enemies
                 chaseBuffer = zombieStats.ChaseBuffer;
                 attackRange = zombieStats.AttackRange;
 
+                attackStrength = zombieStats.AttackStrength;
+
                 isShuffler = zombieStats.IsShuffler;
                 hasSecondAttack = zombieStats.HasSecondAttack;
+                secondaryAttackRange = zombieStats.SecondaryAttackRange;
 
                 movementAudio = zombieStats.MovementAudio;
                 attackAudio = zombieStats.AttackAudio;
+                deathAudio = zombieStats.DeathAudio;
             }
         }
 
         private void Update()
         {
-            if (currentState == ZombieStates.Attack)
+            if (currentState == ZombieStates.Attack || currentState == ZombieStates.Attack2)
             {
                 return;
             }
@@ -106,7 +117,10 @@ namespace ZombeezGameJam.Entities.Enemies
             {
                 target = player.transform;
 
-                if (distanceToEntity < attackRange)
+                if (CheckPlayerInSecondaryAttackRange(distanceToEntity) && hasSecondAttack && isSecondaryAttackReady)
+                {
+                    combatScript.SecondaryAttack();
+                } else if (distanceToEntity < attackRange)
                 {
                     combatScript.Attack();
                 } else
@@ -142,6 +156,16 @@ namespace ZombeezGameJam.Entities.Enemies
             {
                 movementScript.StartRoam();
             }
+
+            //if (currentState == ZombieStates.Spawn)
+            //{
+            //    boxCollider.enabled = false;
+            //    circleCollider.enabled = false;
+            //} else
+            //{
+            //    boxCollider.enabled = true;
+            //    circleCollider.enabled = true;
+            //}
         }
 
         internal GameObject FindClosestTarget(Collider2D[] a_potentialTargets)
@@ -169,16 +193,28 @@ namespace ZombeezGameJam.Entities.Enemies
             return direction / Mathf.Abs(direction);
         }
 
+        private bool CheckPlayerInSecondaryAttackRange(float a_distanceToTarget)
+        {
+            return a_distanceToTarget < secondaryAttackRange && a_distanceToTarget > attackRange && target.CompareTag("Player") && Random.value > 0.95f;
+        }
+
         public override void OnDeath()
         {
             base.OnDeath();
 
             if (Random.value >= 0.2f)
             {
-                if (_weaponDrop != null)
+                if (_weaponPickup != null)
                 {
-                    Instantiate(_weaponDrop, transform.position, Quaternion.identity);
+                    WeaponPickup weapon = Instantiate(_weaponPickup, transform.position, Quaternion.identity);
+                    weapon.DroppedWeapon = _weaponStats[Random.Range(0, _weaponStats.Length)];
+                    //Debug.Log(weapon.DroppedWeapon.name);
                 }
+            }
+
+            if (deathAudio != null)
+            {
+                SoundFXManager.instance.PlaySoundClip(deathAudio, transform, 1f);
             }
 
             GameManager.instance.CountdownZombies();

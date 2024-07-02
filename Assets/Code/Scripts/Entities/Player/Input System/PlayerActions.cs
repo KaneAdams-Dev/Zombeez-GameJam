@@ -53,7 +53,7 @@ namespace ZombeezGameJam
                     ""id"": ""087652dc-6943-4ee7-abe6-41a453b05838"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.2),Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -82,17 +82,6 @@ namespace ZombeezGameJam
                     ""name"": """",
                     ""id"": ""ff16b879-a5a5-4e59-8fd2-391d751087e8"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2dfdc8c-17ac-4702-833d-c27dc7b728bd"",
-                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -268,7 +257,18 @@ namespace ZombeezGameJam
                 {
                     ""name"": """",
                     ""id"": ""60c5977e-dd1c-4742-b6e3-46f828817be5"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff0f9d28-89e3-4e80-971e-86fa1219da64"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

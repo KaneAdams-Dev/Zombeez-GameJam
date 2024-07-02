@@ -23,12 +23,12 @@ namespace ZombeezGameJam.Entities.Enemies
         // Update is called once per frame
         private void Update()
         {
-            if (!CheckIfGrounded())
-            {
-                _rbody.constraints = RigidbodyConstraints2D.None;
-            }
+            //if (!CheckIfGrounded())
+            //{
+            //    _rbody.constraints = RigidbodyConstraints2D.None;
+            //}
 
-            if ((!_zombie.isShuffler) && (_zombie.currentState == ZombieStates.Patrol || _zombie.currentState == ZombieStates.Chase))
+            if ((!_zombie.isShuffler) && (_zombie.currentState == ZombieStates.Patrol || _zombie.currentState == ZombieStates.Chase) && _zombie.target != null)
             {
                 MoveZombie();
             }

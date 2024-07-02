@@ -13,10 +13,6 @@ namespace ZombeezGameJam.Entities
         [SerializeField][Min(10)] private int _maxHealth = 100;
         [SerializeField] private int _defense = 0;
 
-        [Header("Combat System")]
-        [SerializeField] private int _attackStrength = 5;
-
-        public int AttackStength => _attackStrength;
 
         [Space(5)]
         [SerializeField] private GameObject _corpsePrefab;
@@ -80,7 +76,7 @@ namespace ZombeezGameJam.Entities
             _currentHealth -= a_damageAmount;
             UpdateHealth();
 
-            if (_currentHealth <= 0)
+            if (_currentHealth < 0)
             {
                 OnDeath();
             }
@@ -99,7 +95,7 @@ namespace ZombeezGameJam.Entities
 
         public virtual void UpdateHealth()
         {
-            Debug.Log("New Health: " + _currentHealth);
+
         }
 
         private void ReturnToDefaultColour()

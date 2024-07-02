@@ -34,6 +34,19 @@ namespace ZombeezGameJam.Entities.Enemies
             }
         }
 
+        public void PlayDeathSound()
+        {
+            if (GetComponent<SpriteRenderer>().isVisible)
+            {
+                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, 1f);
+            }
+        }
+
+        public void FinishSpawn()
+        {
+            _zombie.UpdateZombieState(ZombieStates.Idle);
+        }
+
         #endregion Custom Methods
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9ccbef0701ed34785289ea651d3003, type: 3}
+  m_Name: Glock
+  m_EditorClassIdentifier: 
+  _weaponType: 2
+  _pickupSprite: {fileID: 21300000, guid: 8eaf68b1a702e304eb774e33bbdf7bfd, type: 3}
+  _MuzzleFlash: {fileID: 1811426585919713760, guid: e110a374b45665f4ba8aacaaa6767960, type: 3}
+  _bulletPrefab: {fileID: 4915564348103375315, guid: d1879c80dde32a14999400c82b11d900, type: 3}
+  _damage: 40
+  _bulletDropoff: 1
+  _fireRate: 10
+  _isAutomatic: 0
+  _gunshotAudio: {fileID: 8300000, guid: 40ce72b858d529044b0f795ba42577c0, type: 3}

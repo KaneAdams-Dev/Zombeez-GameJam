@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2859266776769596821}
   - component: {fileID: 6326056348203613959}
   - component: {fileID: 108266457274423108}
+  - component: {fileID: 4522340448843424548}
   m_Layer: 9
   m_Name: Zombie1
   m_TagString: Untagged
@@ -54,13 +55,22 @@ MonoBehaviour:
   _renderer: {fileID: 7876322686838413957}
   _maxHealth: 100
   _defense: 0
-  _attackStrength: 20
   _corpsePrefab: {fileID: 7710702260405054554, guid: 124e865333aff1f4d94bb84e1d57155b, type: 3}
   combatScript: {fileID: 5409927162261797511}
   animationScript: {fileID: 4591846059741718633}
   movementScript: {fileID: 9084702459429387336}
   hitboxScript: {fileID: 2281086907157854425}
-  _weaponDrop: {fileID: 1979191887872998920, guid: 2730d66f7cc52194882143c4d3777d81, type: 3}
+  _weaponStats:
+  - {fileID: 11400000, guid: 29f16e291e9f9b44d9cedeb308d08dea, type: 2}
+  - {fileID: 11400000, guid: c03eeee3aba2a8c498d8758c3b09d45b, type: 2}
+  - {fileID: 11400000, guid: 744ab09a5fa097747a8624d6810ba6de, type: 2}
+  - {fileID: 11400000, guid: 85b3d123837ce994eb1aba68d09996ec, type: 2}
+  - {fileID: 11400000, guid: abdfdd0dbd3b91d42b16b98505b19655, type: 2}
+  - {fileID: 11400000, guid: 185b13f12bc5ee040a61ae16f97a8058, type: 2}
+  - {fileID: 11400000, guid: 012aa5528bafc224a9cde53224444710, type: 2}
+  - {fileID: 11400000, guid: b4c1dca04f215ad4083f8792bf6880f9, type: 2}
+  - {fileID: 11400000, guid: 1cece6bd488b61a489ddb58348e86ebd, type: 2}
+  _weaponPickup: {fileID: 5598268940460466594, guid: 2730d66f7cc52194882143c4d3777d81, type: 3}
   target: {fileID: 0}
   _targetLayers:
     serializedVersion: 2
@@ -70,12 +80,15 @@ MonoBehaviour:
   attackRange: 0
   chaseRange: 0
   chaseBuffer: 0
+  attackStrength: 5
   isShuffler: 1
   hasSecondAttack: 0
+  secondaryAttackRange: 0
   movementAudio:
   - {fileID: 8300000, guid: cd7396ca466b54f47a33be391189471f, type: 3}
   - {fileID: 8300000, guid: 8f38c3e052e904b43b3f808d641253a5, type: 3}
   attackAudio: {fileID: 8300000, guid: bb3f5baa98f27824fa60fad1e7519c79, type: 3}
+  deathAudio: {fileID: 0}
 --- !u!114 &5409927162261797511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +143,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &6326056348203613959
 BoxCollider2D:
@@ -139,7 +152,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5769613846208520599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -184,7 +197,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5769613846208520599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -212,6 +225,41 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!70 &4522340448843424548
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769613846208520599}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  m_Size: {x: 0.2, y: 0.44}
+  m_Direction: 0
 --- !u!1 &7850732168809845262
 GameObject:
   m_ObjectHideFlags: 0

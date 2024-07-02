@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9ccbef0701ed34785289ea651d3003, type: 3}
+  m_Name: AssualtShotgun
+  m_EditorClassIdentifier: 
+  _weaponType: 6
+  _pickupSprite: {fileID: 21300000, guid: 6c699ea7783122347a249c6a3f58a3f7, type: 3}
+  _MuzzleFlash: {fileID: 3484460814363318262, guid: 2aac12b5ec014be41a869d903b223f92, type: 3}
+  _bulletPrefab: {fileID: 6556047629996960320, guid: 23334870152f778409659a6c3fc5337d, type: 3}
+  _damage: 150
+  _bulletDropoff: 0.7
+  _fireRate: 2
+  _isAutomatic: 0
+  _gunshotAudio: {fileID: 8300000, guid: 41720b9488e40d74ca94285dd80ca182, type: 3}

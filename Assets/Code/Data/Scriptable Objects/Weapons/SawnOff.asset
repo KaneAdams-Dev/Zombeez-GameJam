@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9ccbef0701ed34785289ea651d3003, type: 3}
+  m_Name: SawnOff
+  m_EditorClassIdentifier: 
+  _weaponType: 4
+  _pickupSprite: {fileID: 21300000, guid: aab5092dff511e94ba011c5170424400, type: 3}
+  _MuzzleFlash: {fileID: 7700723770855631029, guid: b8ea47004c71b9941830bb6218b7a6f9, type: 3}
+  _bulletPrefab: {fileID: 8857378319914315025, guid: 5efaf3c0200137a47bf5406864e2c694, type: 3}
+  _damage: 125
+  _bulletDropoff: 0.55
+  _fireRate: 1
+  _isAutomatic: 0
+  _gunshotAudio: {fileID: 8300000, guid: 41720b9488e40d74ca94285dd80ca182, type: 3}

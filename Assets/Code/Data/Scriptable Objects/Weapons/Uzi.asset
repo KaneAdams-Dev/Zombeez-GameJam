@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9ccbef0701ed34785289ea651d3003, type: 3}
+  m_Name: Uzi
+  m_EditorClassIdentifier: 
+  _weaponType: 7
+  _pickupSprite: {fileID: 21300000, guid: 14f845a4871533c449845a731abb51eb, type: 3}
+  _MuzzleFlash: {fileID: 1599641789920075700, guid: ff8bd7086be19554f96656916e89a083, type: 3}
+  _bulletPrefab: {fileID: 964990560719510388, guid: 69373295e164a994282de5815d6ce055, type: 3}
+  _damage: 35
+  _bulletDropoff: 0.75
+  _fireRate: 15
+  _isAutomatic: 1
+  _gunshotAudio: {fileID: 8300000, guid: a897597938b6f1d469fa8894f488dc6f, type: 3}

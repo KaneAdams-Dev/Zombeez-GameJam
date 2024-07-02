@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
+using ZombeezGameJam.Managers;
 
 namespace ZombeezGameJam.Entities.Player
 {
@@ -63,19 +65,33 @@ namespace ZombeezGameJam.Entities.Player
         {
             if (CanPlayerFire())
             {
-                _playerScript.weaponScript.FireWeapon();
+                if (context.interaction is HoldInteraction)
+                {
+                    //Debug.Log("Spray and Pray");
+                    _playerScript.weaponHandler.StartFiring();
+                } else if (context.interaction is TapInteraction) { }
+                {
+                    //Debug.Log("Tappy-Tap!");
+                    _playerScript.weaponHandler.Fire();
+                }
+
             }
+        }
+
+        private void OnFireEnded(InputAction.CallbackContext context)
+        {
+            _playerScript.weaponHandler.StopFiring();
         }
 
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
-            Debug.Log("Interact button pressed");
+            //Debug.Log("Interact button pressed");
             _playerScript.interactor.CheckForInteractions();
         }
 
-        private bool CanPlayerFire()
+        internal bool CanPlayerFire()
         {
-            bool isUnarmed = _playerScript.currentWeapon == PlayerWeapons.Unarmed;
+            bool isUnarmed = _playerScript.currentWeapon == WeaponTypes.Unarmed;
             PlayerStates[] invalidStates = new PlayerStates[] { PlayerStates.Jump, PlayerStates.Midair, PlayerStates.Land };
             bool isInValidState = invalidStates.Contains(_playerScript.currentState);
 
@@ -91,6 +107,7 @@ namespace ZombeezGameJam.Entities.Player
 
             _playerActionsMap.Jump.performed += OnJumpPerformed;
             _playerActionsMap.Fire.performed += OnFirePerformed;
+            _playerActionsMap.Fire.canceled += OnFireEnded;
             _playerActionsMap.Interact.performed += OnInteractPerformed;
         }
 
@@ -103,6 +120,7 @@ namespace ZombeezGameJam.Entities.Player
 
             _playerActionsMap.Jump.performed -= OnJumpPerformed;
             _playerActionsMap.Fire.performed -= OnFirePerformed;
+            _playerActionsMap.Fire.canceled -= OnFireEnded;
             _playerActionsMap.Interact.performed -= OnInteractPerformed;
         }
 
