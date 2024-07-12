@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZombeezGameJam.Managers
 {
-    public class ObjectPoolManager : MonoBehaviour
+    public class MusicManager : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

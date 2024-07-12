@@ -66,33 +66,9 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             base.Start();
             isSecondaryAttackReady = true;
-            
+
             currentState = ZombieStates.Spawn;
             UpdateZombieState(ZombieStates.Spawn);
-        }
-
-        public override void ApplyEntityStats()
-        {
-            base.ApplyEntityStats();
-
-            animationScript._animator.runtimeAnimatorController = _stats.Controller;
-
-            if (_stats is ZombieStats zombieStats)
-            {
-                chaseRange = zombieStats.ChaseRange;
-                chaseBuffer = zombieStats.ChaseBuffer;
-                attackRange = zombieStats.AttackRange;
-
-                attackStrength = zombieStats.AttackStrength;
-
-                isShuffler = zombieStats.IsShuffler;
-                hasSecondAttack = zombieStats.HasSecondAttack;
-                secondaryAttackRange = zombieStats.SecondaryAttackRange;
-
-                movementAudio = zombieStats.MovementAudio;
-                attackAudio = zombieStats.AttackAudio;
-                deathAudio = zombieStats.DeathAudio;
-            }
         }
 
         private void Update()
@@ -141,6 +117,30 @@ namespace ZombeezGameJam.Entities.Enemies
         #endregion Unity Methods
 
         #region Custom Methods
+
+        public override void ApplyEntityStats()
+        {
+            base.ApplyEntityStats();
+
+            animationScript._animator.runtimeAnimatorController = _stats.Controller;
+
+            if (_stats is ZombieStats zombieStats)
+            {
+                chaseRange = zombieStats.ChaseRange;
+                chaseBuffer = zombieStats.ChaseBuffer;
+                attackRange = zombieStats.AttackRange;
+
+                attackStrength = zombieStats.AttackStrength;
+
+                isShuffler = zombieStats.IsShuffler;
+                hasSecondAttack = zombieStats.HasSecondAttack;
+                secondaryAttackRange = zombieStats.SecondaryAttackRange;
+
+                movementAudio = zombieStats.MovementAudio;
+                attackAudio = zombieStats.AttackAudio;
+                deathAudio = zombieStats.DeathAudio;
+            }
+        }
 
         internal void UpdateZombieState(ZombieStates a_newState)
         {
@@ -202,19 +202,17 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             base.OnDeath();
 
-            if (Random.value >= 0.2f)
+            if (Random.value >= 0.2f && _weaponPickup != null)
             {
-                if (_weaponPickup != null)
-                {
-                    WeaponPickup weapon = Instantiate(_weaponPickup, transform.position, Quaternion.identity);
-                    weapon.DroppedWeapon = _weaponStats[Random.Range(0, _weaponStats.Length)];
-                    //Debug.Log(weapon.DroppedWeapon.name);
-                }
+                WeaponPickup weapon = Instantiate(_weaponPickup, transform.position, Quaternion.identity);
+                weapon.DroppedWeapon = _weaponStats[Random.Range(0, _weaponStats.Length)];
+                Destroy(weapon.gameObject, 30f);
+                //Debug.Log(weapon.DroppedWeapon.name);
             }
 
             if (deathAudio != null)
             {
-                SoundFXManager.instance.PlaySoundClip(deathAudio, transform, 1f);
+                SoundFXManager.instance.PlaySoundClip(deathAudio, transform, 1f, 80);
             }
 
             GameManager.instance.CountdownZombies();

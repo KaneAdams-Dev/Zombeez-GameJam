@@ -31,19 +31,17 @@ namespace ZombeezGameJam.Entities.Survivors
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.H) && _survivorScript.currentState == SurvivorStates.WaitingAtCheckpoint)
-            {
-                _desiredPosition = _finishPosition.position;
-                _survivorScript.UpdateSurvivorStates(SurvivorStates.MoveToLevelFinish);
-            }
+            
         }
 
         private void FixedUpdate()
         {
-            if (CheckIfMoving())
+            if (!CheckIfMoving())
             {
-                MoveSurvivor();
+                return;
             }
+
+            MoveSurvivor();
         }
 
         internal void MoveSurvivor()
@@ -64,7 +62,7 @@ namespace ZombeezGameJam.Entities.Survivors
                     if (GameManager.instance.IsFinalWave)
                     {
                         _survivorScript.RunToSafehouse();
-                    } 
+                    }
 
                     return;
                 }

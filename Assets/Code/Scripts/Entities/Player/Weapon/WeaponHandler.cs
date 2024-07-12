@@ -63,7 +63,7 @@ namespace ZombeezGameJam.Entities.Player
 
                 ShowMuzzleFlash();
                 FireBullet();
-                SoundFXManager.instance.PlaySoundClip(_gunShotAudio, _spawnPoint, 1);
+                SoundFXManager.instance.PlaySoundClip(_gunShotAudio, _spawnPoint, 1, 64);
 
                 StartCoroutine(FireRateHandler());
             }

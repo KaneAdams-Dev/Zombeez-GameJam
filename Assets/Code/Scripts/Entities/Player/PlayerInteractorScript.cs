@@ -27,12 +27,14 @@ namespace ZombeezGameJam.Entities.Player
         {
             RaycastHit2D hit = Physics2D.Raycast(origin: transform.position, direction: transform.right * transform.localScale.x, distance: _interactRange, _interactLayers.value);
 
-            if (hit.collider != null)
+            if (hit.collider == null)
             {
-                if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
-                {
-                    interactable.Interact();
-                }
+                return;
+            }
+
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
+            {
+                interactable.Interact(gameObject);
             }
         }
 

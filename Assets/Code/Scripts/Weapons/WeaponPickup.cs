@@ -1,11 +1,12 @@
 using UnityEngine;
 using ZombeezGameJam.Entities.Player;
+using ZombeezGameJam.Interfaces;
 using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Weapons
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class WeaponPickup : MonoBehaviour
+    public class WeaponPickup : MonoBehaviour, IInteractable
     {
         [SerializeField] private WeaponStats _droppedWeapon;
         public WeaponStats DroppedWeapon
@@ -51,14 +52,26 @@ namespace ZombeezGameJam.Weapons
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player player))
-            {
-                collision.gameObject.GetComponent<Player>().PickUpWeapon(_droppedWeapon);
 
-                Destroy(gameObject);
-            }
         }
 
         #endregion Unity Methods
+
+        #region Custom Methods
+
+        public void Interact(GameObject a_interactingObject)
+        {
+            if (a_interactingObject.TryGetComponent(out Player player))
+            {
+                player.PickUpWeapon(_droppedWeapon);
+                Destroy(gameObject);
+            } else
+            {
+                Debug.LogError("Object that isn't player is interacting!");
+            }
+            
+        }
+
+        #endregion Custom Methods
     }
 }

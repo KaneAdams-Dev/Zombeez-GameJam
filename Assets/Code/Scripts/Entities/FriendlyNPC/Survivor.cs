@@ -77,7 +77,7 @@ namespace ZombeezGameJam.Entities.Survivors
             animationScript.UpdateAnimationState();
         }
 
-        public void Interact()
+        public void Interact(GameObject a_interactingObject)
         {
             if (currentState == SurvivorStates.Idle || currentState == SurvivorStates.Flee)
             {
