@@ -26,6 +26,8 @@ namespace ZombeezGameJam.Entities.Player
         private bool _isAutomatic;
 
         private AudioClip _gunShotAudio;
+        private float _gunShotPitch;
+        private Vector2 _pitchRange;
 
         // Start is called before the first frame update
         void Start()
@@ -52,6 +54,8 @@ namespace ZombeezGameJam.Entities.Player
             _fireRate = a_newWeaponStats.FireRate;
             _isAutomatic = a_newWeaponStats.IsAutomatic;
             _gunShotAudio = a_newWeaponStats.GunShotAudio;
+            _gunShotPitch = a_newWeaponStats.AudioPitch;
+            _pitchRange = a_newWeaponStats.PitchRange;
         }
 
         internal void Fire()
@@ -63,7 +67,7 @@ namespace ZombeezGameJam.Entities.Player
 
                 ShowMuzzleFlash();
                 FireBullet();
-                SoundFXManager.instance.PlaySoundClip(_gunShotAudio, _spawnPoint, 1, 64);
+                SoundFXManager.instance.PlaySoundClip(_gunShotAudio, _spawnPoint, a_volume: 0.75f, _gunShotPitch, a_minPitch: _pitchRange.x, a_maxPitch: _pitchRange.y, a_priority: 64);
 
                 StartCoroutine(FireRateHandler());
             }

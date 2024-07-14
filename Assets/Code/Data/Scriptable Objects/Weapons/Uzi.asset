@@ -21,3 +21,5 @@ MonoBehaviour:
   _fireRate: 15
   _isAutomatic: 1
   _gunshotAudio: {fileID: 8300000, guid: a897597938b6f1d469fa8894f488dc6f, type: 3}
+  _audioPitch: 0.9
+  _pitchRange: {x: 0.9, y: 1.1}

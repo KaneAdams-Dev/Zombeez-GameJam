@@ -212,7 +212,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
             if (deathAudio != null)
             {
-                SoundFXManager.instance.PlaySoundClip(deathAudio, transform, 1f, 80);
+                SoundFXManager.instance.PlaySoundClip(deathAudio, transform, a_priority: 80);
             }
 
             GameManager.instance.CountdownZombies();

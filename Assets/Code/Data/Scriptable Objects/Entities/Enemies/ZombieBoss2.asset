@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e31c608c2c5764a8c5284fd9b67ffb, type: 3}
   m_Name: ZombieBoss2
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
-  _defense: 30
+  _maxHealth: 750
+  _defense: 20
   corpsePrefab: {fileID: 7710702260405054554, guid: 13ae50abf3d59234580c6c20451a1e30, type: 3}
   _movementSpeed: 10
   _animatorController: {fileID: 9100000, guid: 32c1a7ae79895364ab908687891a6310, type: 2}

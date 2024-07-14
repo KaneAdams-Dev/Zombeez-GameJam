@@ -22,7 +22,7 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             if (GetComponent<SpriteRenderer>().isVisible)
             {
-                SoundFXManager.instance.PlayRandomSoundClip(_zombie.movementAudio, _zombie.transform, 1f, 80);
+                SoundFXManager.instance.PlaySoundClip(_zombie.movementAudio, _zombie.transform, a_priority: 80);
             }
         }
 
@@ -30,7 +30,7 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             if (GetComponent<SpriteRenderer>().isVisible)
             {
-                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, 1f, 80);
+                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, a_priority: 80);
             }
         }
 
@@ -38,7 +38,7 @@ namespace ZombeezGameJam.Entities.Enemies
         {
             if (GetComponent<SpriteRenderer>().isVisible)
             {
-                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, 1f, 80);
+                SoundFXManager.instance.PlaySoundClip(_zombie.attackAudio, _zombie.transform, a_priority: 80);
             }
         }
 
