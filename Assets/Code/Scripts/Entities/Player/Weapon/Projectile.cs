@@ -42,7 +42,7 @@ namespace ZombeezGameJam.Entities.Player
 
         private void FixedUpdate()
         {
-            _rbody.velocity = 500f * Time.fixedDeltaTime * new Vector2(_xDirection, 0);
+            _rbody.linearVelocity = 500f * Time.fixedDeltaTime * new Vector2(_xDirection, 0);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

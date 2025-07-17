@@ -54,7 +54,7 @@ namespace ZombeezGameJam.Entities.Enemies
             transform.localScale = new Vector2(_zombie.IsFacingTarget(), transform.localScale.y);
 
             float xVelocity = _zombie.MovementSpeed * Time.fixedDeltaTime * transform.localScale.x;
-            _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
+            _rbody.linearVelocity = new Vector2(xVelocity, _rbody.linearVelocity.y);
 
             if (_zombie.currentState == ZombieStates.Patrol)
             {
@@ -73,7 +73,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
         internal void StopMovingZombie()
         {
-            _rbody.velocity = Vector2.zero;
+            _rbody.linearVelocity = Vector2.zero;
         }
 
         private bool CheckIfGrounded()

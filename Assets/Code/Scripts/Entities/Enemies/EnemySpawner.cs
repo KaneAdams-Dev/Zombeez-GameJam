@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ZombeezGameJam.Managers;
 using ZombeezGameJam.Stats;
@@ -44,11 +43,11 @@ namespace ZombeezGameJam.Entities.Enemies
             //if (Input.GetKeyDown(KeyCode.U))
             //{
             //    StopAllCoroutines();
-                
+
             //}
         }
 
-        
+
 
         void StartFinalWave()
         {
@@ -71,7 +70,7 @@ namespace ZombeezGameJam.Entities.Enemies
             {
                 SpawnZombies();
 
-                yield return new WaitForSeconds(23);
+                yield return new WaitForSeconds(20);
 
                 //Vector3 spawnPoint = new Vector3(_spawnBoundaryStart.position.x, -0.2f, 0f);
                 //Zombie spawnedZombie = Instantiate(_enemyPrefab, spawnPoint, Quaternion.identity);
@@ -104,7 +103,7 @@ namespace ZombeezGameJam.Entities.Enemies
 
                     yield return null;
                 }
-                
+
                 yield return new WaitForSeconds(5);
             }
         }

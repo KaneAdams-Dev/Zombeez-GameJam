@@ -69,10 +69,10 @@ namespace ZombeezGameJam.Managers
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.V))
-            {
-                Debug.Log(_survivorsInHorde.Count);
-            }
+            //if (Input.GetKey(KeyCode.V))
+            //{
+            //    Debug.Log(_survivorsInHorde.Count);
+            //}
         }
 
         #endregion Unity Methods

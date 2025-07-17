@@ -55,7 +55,7 @@ namespace ZombeezGameJam.Entities.Player
             transform.localScale = _playerScript.inputScript.isFacingLeft ? new Vector2(-1, transform.localScale.y) : new Vector2(1, transform.localScale.y);
 
             float xVelocity = _playerScript.inputScript.xMoveInput * _playerScript.MovementSpeed * Time.fixedDeltaTime;
-            _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
+            _rbody.linearVelocity = new Vector2(xVelocity, _rbody.linearVelocity.y);
         }
 
         public void ExecuteJump()
@@ -65,7 +65,7 @@ namespace ZombeezGameJam.Entities.Player
                 _playerScript.UpdatePlayerState(PlayerStates.Jump);
 
                 float yVelocity = _playerScript.jumpHeight * Time.fixedDeltaTime;
-                _rbody.velocity = new Vector2(_rbody.velocity.x, yVelocity);
+                _rbody.linearVelocity = new Vector2(_rbody.linearVelocity.x, yVelocity);
             }
         }
 

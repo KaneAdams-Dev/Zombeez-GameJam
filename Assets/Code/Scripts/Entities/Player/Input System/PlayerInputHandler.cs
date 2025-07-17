@@ -10,7 +10,7 @@ namespace ZombeezGameJam.Entities.Player
     public class PlayerInputHandler : MonoBehaviour
     {
         [Header("Script References")]
-        [SerializeField] private Player _playerScript;
+        [SerializeField] protected Player _playerScript;
 
         internal bool isFacingLeft;
         internal float xMoveInput;
@@ -20,19 +20,19 @@ namespace ZombeezGameJam.Entities.Player
 
         #region Unity Methods
 
-        private void Awake()
+        public virtual void Awake()
         {
             _playerActions = new PlayerActions();
             _playerActionsMap = _playerActions.Player_Map;
         }
 
-        private void OnEnable()
+        public virtual void OnEnable()
         {
             GameManager.OnGameOver += DisableInputs;
             EnableInputs();
         }
 
-        private void OnDisable()
+        public virtual void OnDisable()
         {
             GameManager.OnGameOver -= DisableInputs;
             DisableInputs();
@@ -42,7 +42,7 @@ namespace ZombeezGameJam.Entities.Player
 
         #region Custom Methods
 
-        private void OnMovementPerformed(InputAction.CallbackContext context)
+        public virtual void OnMovementPerformed(InputAction.CallbackContext context)
         {
             xMoveInput = context.ReadValue<float>();
 
@@ -50,40 +50,41 @@ namespace ZombeezGameJam.Entities.Player
             _playerScript.UpdatePlayerState(PlayerStates.Run);
         }
 
-        private void OnMovementCanceled(InputAction.CallbackContext context)
+        public virtual void OnMovementCanceled(InputAction.CallbackContext context)
         {
             xMoveInput = 0;
             _playerScript.UpdatePlayerState(PlayerStates.Idle);
         }
 
-        private void OnJumpPerformed(InputAction.CallbackContext context)
+        public virtual void OnJumpPerformed(InputAction.CallbackContext context)
         {
             _playerScript.movementScript.ExecuteJump();
         }
 
-        private void OnFirePerformed(InputAction.CallbackContext context)
+        public virtual void OnFirePerformed(InputAction.CallbackContext context)
         {
+            Debug.Log("OnFireCalled");
             if (CanPlayerFire())
             {
                 if (context.interaction is HoldInteraction)
                 {
-                    //Debug.Log("Spray and Pray");
+                    Debug.Log("Spray and Pray");
                     _playerScript.weaponHandler.StartFiring();
                 } else if (context.interaction is TapInteraction) { }
                 {
-                    //Debug.Log("Tappy-Tap!");
+                    Debug.Log("Tappy-Tap!");
                     _playerScript.weaponHandler.Fire();
                 }
 
             }
         }
 
-        private void OnFireEnded(InputAction.CallbackContext context)
+        public virtual void OnFireEnded(InputAction.CallbackContext context)
         {
             _playerScript.weaponHandler.StopFiring();
         }
 
-        private void OnInteractPerformed(InputAction.CallbackContext context)
+        public virtual void OnInteractPerformed(InputAction.CallbackContext context)
         {
             //Debug.Log("Interact button pressed");
             _playerScript.interactor.CheckForInteractions();
@@ -98,7 +99,7 @@ namespace ZombeezGameJam.Entities.Player
             return !(isUnarmed || isInValidState);
         }
 
-        private void EnableInputs()
+        public virtual void EnableInputs()
         {
             _playerActionsMap.Enable();
 
@@ -111,7 +112,7 @@ namespace ZombeezGameJam.Entities.Player
             _playerActionsMap.Interact.performed += OnInteractPerformed;
         }
 
-        private void DisableInputs()
+        public virtual void DisableInputs()
         {
             _playerActionsMap.Disable();
 

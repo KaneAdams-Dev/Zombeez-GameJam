@@ -47,13 +47,13 @@ namespace ZombeezGameJam.Entities.Survivors
         internal void MoveSurvivor()
         {
             float xVelocity = _survivorScript.MovementSpeed * Time.fixedDeltaTime * transform.localScale.x;
-            _rbody.velocity = new Vector2(xVelocity, _rbody.velocity.y);
+            _rbody.linearVelocity = new Vector2(xVelocity, _rbody.linearVelocity.y);
 
             if (_survivorScript.currentState == SurvivorStates.MoveToHordeCheckpoint)
             {
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
-                    _rbody.velocity = Vector2.zero;
+                    _rbody.linearVelocity = Vector2.zero;
                     transform.localScale = Vector3.one;
 
                     GameManager.instance.AddSurvivorToHorde(gameObject);
@@ -83,7 +83,7 @@ namespace ZombeezGameJam.Entities.Survivors
             {
                 if (Vector3.Distance(_desiredPosition, transform.position) < 0.05f)
                 {
-                    _rbody.velocity = Vector2.zero;
+                    _rbody.linearVelocity = Vector2.zero;
                     _survivorScript.UpdateSurvivorStates(SurvivorStates.Idle);
 
                     return;
