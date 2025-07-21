@@ -95,7 +95,7 @@ namespace ZombeezGameJam.Entities
 
         public virtual void UpdateHealth()
         {
-
+            ColourLogger.Log(this, "Ouch");
         }
 
         private void ReturnToDefaultColour()

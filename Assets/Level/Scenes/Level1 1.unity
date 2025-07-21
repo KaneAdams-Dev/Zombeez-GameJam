@@ -15473,6 +15473,7 @@ GameObject:
   - component: {fileID: 1478536260}
   - component: {fileID: 1478536259}
   - component: {fileID: 1478536261}
+  - component: {fileID: 1478536262}
   m_Layer: 5
   m_Name: Move Joystick
   m_TagString: Untagged
@@ -15551,6 +15552,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knobOutline: {fileID: 661215709}
+--- !u!114 &1478536262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478536257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementRange: 50
+  m_DynamicOriginRange: 100
+  m_ControlPath: <Gamepad>/leftStick
+  m_Behaviour: 0
+  m_UseIsolatedInputActions: 0
+  m_PointerDownAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4edfb83d-d4d7-4a15-a718-d175388a1712
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_PointerMoveAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 75b92ce4-e804-4716-a215-8f8c03a851da
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1528742670
 GameObject:
   m_ObjectHideFlags: 0

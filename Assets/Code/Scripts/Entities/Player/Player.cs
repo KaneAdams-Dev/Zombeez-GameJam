@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using ZombeezGameJam.Interfaces;
-using ZombeezGameJam.Managers;
 using ZombeezGameJam.Stats;
 
 namespace ZombeezGameJam.Entities.Player
@@ -15,7 +14,7 @@ namespace ZombeezGameJam.Entities.Player
         Midair,
     }
 
-    
+
 
     public class Player : BaseEntity, IStatsApplicable
     {
@@ -48,6 +47,11 @@ namespace ZombeezGameJam.Entities.Player
             UpdatePlayerState(PlayerStates.Idle);
         }
 
+        private void OnEnable()
+        {
+            ColourLogger.RegisterColour(this, "purple");
+        }
+
         #endregion Unity Methods
 
         #region Custom Methods
@@ -55,7 +59,7 @@ namespace ZombeezGameJam.Entities.Player
         public override void ApplyEntityStats()
         {
             base.ApplyEntityStats();
-            
+
             animationScript._animator.runtimeAnimatorController = _stats.Controller;
 
             if (_stats is PlayerStats playerStats)
@@ -84,6 +88,7 @@ namespace ZombeezGameJam.Entities.Player
         public override void UpdateHealth()
         {
             base.UpdateHealth();
+            ColourLogger.Log(this, "This is a test dialogue");
             OnHealthChange?.Invoke(CurrentHealth, MaxHealth);
         }
 

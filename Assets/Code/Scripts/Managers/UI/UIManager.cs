@@ -1,6 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using ZombeezGameJam.Entities.Player;
 
 namespace ZombeezGameJam.Managers.UI
@@ -80,7 +80,7 @@ namespace ZombeezGameJam.Managers.UI
         {
             _zombieCounterText.text = $"{a_zombieCount} Zombies Remaining";
         }
-        
+
         private void UpdateSurvivorCounterDisplay(int a_survivorCount)
         {
             _survivorCounterText.text = $"{a_survivorCount} Survivors Recruited";
@@ -93,6 +93,7 @@ namespace ZombeezGameJam.Managers.UI
 
         private void UpdateHealthbar(int a_currentHealth, int a_maxHealth)
         {
+            Debug.Log("Called");
             _healthbarFill.fillAmount = (float)a_currentHealth / a_maxHealth;
         }
 

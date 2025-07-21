@@ -33,6 +33,7 @@ namespace ZombeezGameJam.Entities.Survivors
         private void OnEnable()
         {
             GameManager.OnFinalWaveBegins += RunToSafehouse;
+            ColourLogger.RegisterColour(this, "orange");
         }
 
         private void OnDisable()
@@ -116,6 +117,8 @@ namespace ZombeezGameJam.Entities.Survivors
                 UpdateSurvivorStates(SurvivorStates.Flee);
                 moveScript._desiredPosition = new Vector3(Random.Range(moveScript._boundaryStart.position.x, moveScript._boundaryEnd.position.x), transform.position.y, transform.position.z);
             }
+
+            ColourLogger.Log(this, "oh no!");
         }
 
         internal void RunToSafehouse()

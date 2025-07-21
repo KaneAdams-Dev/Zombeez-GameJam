@@ -69,6 +69,8 @@ namespace ZombeezGameJam.Entities.Enemies
 
             currentState = ZombieStates.Spawn;
             UpdateZombieState(ZombieStates.Spawn);
+
+            ColourLogger.RegisterColour(this, "green");
         }
 
         private void Update()
@@ -201,6 +203,10 @@ namespace ZombeezGameJam.Entities.Enemies
         public override void OnDeath()
         {
             base.OnDeath();
+
+            ColourLogger.Log(this, "Grrr (ouch in ZomB)");
+            ColourLogger.LogWarning(this, "Grrr (ouch in ZomB)");
+            ColourLogger.LogError(this, "Grrr (ouch in ZomB)");
 
             if (Random.value >= 0.2f && _weaponPickup != null)
             {
