@@ -35,7 +35,6 @@ public static class ColourLogger
 #if UNITY_EDITOR
         string colour = GetColour(a_className);
         Debug.LogWarning($"<color={colour}>[{a_className.name}]</color> <color={warningColour}>{a_message}</color>");
-        Debug.LogWarning(a_message);
 #endif
     }
 
@@ -44,7 +43,6 @@ public static class ColourLogger
 #if UNITY_EDITOR
         string colour = GetColour(a_className);
         Debug.LogError($"<color={colour}>[{a_className.name}]</color> <color={errorColour}>{a_message}</color>");
-        Debug.LogError(a_message);
 #endif
     }
 
