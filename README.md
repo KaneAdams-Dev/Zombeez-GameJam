@@ -40,7 +40,7 @@
     <li><a href="#controls">Controls</a></li>
    </ul>
   </li>
-  <li><a href="license">License</a></li>
+  <li><a href="#license">License</a></li>
  </ol>
 </details>
 
