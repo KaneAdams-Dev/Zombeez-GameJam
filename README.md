@@ -60,6 +60,7 @@ Alongside keeping themselves alive, the player also has to protect the group fro
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
+
  ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) 
  ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white) 
  ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) 
@@ -75,13 +76,43 @@ Alongside keeping themselves alive, the player also has to protect the group fro
 
 ### Where to Play
 
-The game can be found on <a href="https://kabeja.itch.io/survivor-horde">itch.io</a> as part of <a href="https://itch.io/jam/-zombeez-game-jam-by-fan-studio/rate/2800906">Zombeez Game Jam by Fan Studio🧟‍♂️</a> and is available to play in Browser and as a downloadable.
+The game can be found on *itch.io* as part of <a href="https://itch.io/jam/-zombeez-game-jam-by-fan-studio/rate/2800906">Zombeez Game Jam by Fan Studio🧟‍♂️</a> and is available to play in Browser and as a downloadable:
+<br/>
+👉 <a href="https://kabeja.itch.io/survivor-horde">Play Survivor Horde on itch.io</a>
 
 ### Playing in Browser
+
+**Instructions:**
+<ol>
+    <li>Click the link above to open the game</li>
+    <li>
+        Press the <b>Run game</b> button
+        <ul>
+            <li>If you have already played the game, it may say <b>Restore game</b></li>
+        </ul>
+    </li>
+    <li>Press the fullscreen button in the bottom-right corner for the best experience</li>
+    <li>Wait for the intro to finish and the <b>Play</b> button to appear</li>
+    <li>Click <b>Play</b> with your mouse</li>
+    <li>Use <b>keyboard & mouse</b> or a <b>controller</b> (Xbox layout supported)</li>
+</ol>
+
+> ⚠ <strong>Note:</strong> The game may not work properly on mobile devices or Safari.
+
 <img src="https://i.gyazo.com/5a3c2d741089ca3b110b8eb58bd22bf7.gif"/>
 
 
-### Downloading the .EXE
+### Downloading the Windows .EXE
+
+<ol>
+    <li>Click the link above to open the game</li>
+    <li>Press the <b>Download</b> button to get the .zip file</li>
+    <li>Extract the contents to a folder of your choice</li>
+    <li>Double-click <b>Survivor Horde.exe</b> to start the game</li>
+    <li>Wait for the intro to finish and the <b>Play</b> button to appear</li>
+    <li>Click <b>Play</b> with your mouse</li>
+    <li>Use <b>keyboard & mouse</b> or a <b>controller</b> (Xbox layout supported)</li>
+</ol>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -89,11 +120,14 @@ The game can be found on <a href="https://kabeja.itch.io/survivor-horde">itch.io
 
 ### Aim of the Game
 
+
 ### Controls
-You can seamlessly swap the controls of the game mid-play by simply pressing a button from the other
+
+You can seamlessly swap the controls of the game mid-play by simply pressing a button from the other. The game is playable with an xbox controller and keyboard/mouse on both versions of the game.
 
 #### Controller
-⚠ Controls were mapped around the Xbox Series X controller with other controllers yet to be tested and implemented.
+
+> ⚠ <strong>Note:</strong> Controls were mapped around the Xbox Series X controller with other controllers yet to be tested and implemented.
 
 | Action   | Buttons               |
 | -------- | --------------------- |
@@ -102,8 +136,8 @@ You can seamlessly swap the controls of the game mid-play by simply pressing a b
 | Shoot    | Right Trigger (RT)    |
 | Interact | X Button              |
 
-
 #### Keyboard & Mouse
+
 | Action   | Keys/Buttons            |
 | -------- | ----------------------- |
 | Movement | Arrow Keys / A & D      |
