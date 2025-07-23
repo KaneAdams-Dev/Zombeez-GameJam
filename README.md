@@ -30,7 +30,7 @@
    <ul>
     <li><a href="#where-to-play">Where to Play</a></li>
     <li><a href="#playing-in-browser">Playing in Browser</a></li>
-    <li><a href="#downloading-the-exe">Downloading the .EXE</a></li>
+    <li><a href="#downloading-the-windows-exe">Downloading the Windows .EXE</a></li>
    </ul>
   </li>
   <li>
