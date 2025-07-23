@@ -57,8 +57,6 @@ Throughout the player’s travels, stranded survivors can be rescued and join th
 
 Alongside keeping themselves alive, the player also has to protect the group from the undead, at first it will be returning and fighting zombies but overtime as the player gets more weapons and coins, the group will start gaining weapons and protect each other while you clear a path.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
  ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) 
